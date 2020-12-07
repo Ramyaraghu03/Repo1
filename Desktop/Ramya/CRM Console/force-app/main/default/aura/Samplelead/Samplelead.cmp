@@ -1,0 +1,33 @@
+<aura:component controller= "SampleleadController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	
+    <!--Declare Attributes-->
+    <aura:attribute name="isSpinner" type="boolean" default="false"/>
+    <aura:attribute name="objLead" type="Lead" default="{'sobjectType':'Lead', 
+                                                        'FirstName': '',
+                                                        'LastName': '',
+                                                        'Email': '', 
+                                                        'Company': ''}"/>
+     
+     
+    <!--Component Start-->
+    <div class="slds-m-around--xx-large">
+        <div class="container-fluid">
+            <div class="form-group">
+                <lightning:input name="fname" type="text" maxlength="50" required="true" label="First Name" value="{!v.objLead.FirstName}" />
+            </div>
+            <div class="form-group">
+                <lightning:input name="lname" type="text" maxlength="50" required="true" label="Last Name" value="{!v.objLead.LastName}" />
+            </div>
+            <div class="form-group">
+                <lightning:input name="emailId" type="email" maxlength="100" required="true" label="Email" value="{!v.objLead.Email}" />
+            </div>
+            <div class="form-group">
+                <lightning:input name="company" type="text" maxlength="50" required="true" label="Company" value="{!v.objLead.Company}" />
+            </div>
+        </div>
+        <br/>
+        <lightning:button variant="brand" label="Submit" onclick="{!c.handleLeadSave}" />        
+                
+    </div>
+    <!--Component End-->
+</aura:component>

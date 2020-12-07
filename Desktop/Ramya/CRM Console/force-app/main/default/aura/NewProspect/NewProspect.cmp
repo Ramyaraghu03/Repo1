@@ -1,0 +1,51 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+  <aura:registerEvent name="navigateEvt" type="c:NavigateEvt"/>
+    <aura:attribute name="isOpen" type="boolean" default="true"/>
+    <aura:attribute name="ctype" type="List" default="[
+                                                       {'label': 'Person', 'value': 'Person'},
+                                                       {'label': 'Entity', 'value': 'Entity'}
+                                                     ]"/>
+    <aura:attribute name="selectedctype" type="String" />
+    <aura:if isTrue="{!v.isOpen}">
+        <!--Use aura:if tag to display Model Box, on the bese of conditions. [isOpen boolean attribute] -->   
+      
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open"> 
+            <!--###### MODAL BOX Start######--> 
+            
+                <div class="slds-modal__container">
+                    <!-- ###### MODAL BOX HEADER Start ######-->
+                   
+                    <!--###### MODAL BOX BODY Part Start######-->
+  <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+   
+       <div class="slds-modal__content slds-p-around--medium">
+           <fieldset class="slds-form-element">
+                 <div class="slds-form-element__control">
+<lightning:radioGroup name="myctype" 
+                          label="Contact Type"
+                          options="{! v.ctype }"
+                          value="{! v.ColorValue }"
+                          type="radio"
+                          />
+               </div>
+</fieldset>
+            
+        </div>
+                   
+       
+                </div>
+                    <footer class="slds-modal__footer">     
+            <lightning:button label="Create" 
+                              class="slds-m-top--medium"
+                              variant="brand"
+                              onclick="{!c.Create}"/>
+        </footer>
+                </div>
+                
+            </section>
+          
+    </aura:if>
+ 
+             
+      
+     </aura:component>

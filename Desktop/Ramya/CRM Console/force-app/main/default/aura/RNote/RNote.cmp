@@ -1,0 +1,8 @@
+<aura:component implements="flexipage:availableForAllPageTypes" access="global" >
+
+    <aura:attribute name="newnotetask" type="Client_Contact_Note__c"/>
+                        <lightning:select aura:id="expenseform" label="Contact Type"
+                             name="expensename"
+                             value="{!v.newnotetask.Ramyaraghu03__Contact_Type__c}"
+                             required="true"/>
+</aura:component>

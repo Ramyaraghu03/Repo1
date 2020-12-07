@@ -1,0 +1,15 @@
+<apex:page StandardController="Account">
+  <!-- Begin Default Content REMOVE THIS -->
+  <h1>Congratulations</h1>
+  This is your new Page
+ <p> Hi {! $User.FirstName} </p>
+ <p> You are viewing the account {!Account.Name} </p>
+ <apex:pageBlock title="Custom Output:">
+ <apex:pageBlockSection title="Custom Section Title">
+<apex:outputField value="{!account.Name}"/>
+<apex:outputField value="{!account.Owner.Name}"/>
+<apex:relatedList list="Cases"/>
+<apex:relatedList list="Contacts"/>
+</apex:pageBlockSection>
+</apex:pageBlock>
+ </apex:page>

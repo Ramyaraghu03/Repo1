@@ -1,0 +1,42 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+<aura:attribute name="openModal" type="boolean" default="false"/>
+    <div class="slds-m-around--xx-large">
+        <button class="slds-button slds-button--brand" onclick="{!c.handleOpenModal}">Open Modal</button>  
+        <aura:if isTrue="{!v.openModal}">
+            <!--Modal Box Start-->
+            <div role="dialog" class="slds-modal slds-fade-in-open ">
+                <div class="slds-modal__container">
+                    <div class="slds-modal__header">
+                        <button class="slds-button slds-modal__close slds-button--icon-inverse" title="Close" onclick="{!c.handleCloseModal}">
+                            X
+                            <span class="slds-assistive-text">Close</span>
+                        </button>
+                        <h1 class="slds-text-heading--medium">ReAssign Opportunity</h1>
+                    </div>
+                     
+                    <!--Modal Box Header-->
+                    <div class="slds-modal__content slds-p-around--medium">
+                        <center> <p><b>
+                            Select Opportunity owner
+                  <div class="form-group">
+                  <lightning:select aura:id="oppowner" value="{!v.Userslist}" onchange="{!c.selectedusers}" name="Userpicklist" label="FA  To Assign" required="true">
+                   <option value="">--None--</option>
+                   <aura:iteration items="{!v.industryMap}" var="ind" indexVar="key">
+                   <option text="{!ind.value}" value="{!ind.key}" selected="{!ind.key==v.acc.Industry}" />
+                   </aura:iteration>
+                  </lightning:select>
+                </div>
+                            </b>
+                            </p></center>
+                    </div>
+                    <!--Modal Box Button-->
+                    <div class="slds-modal__footer">
+                        <button class="slds-button slds-button--brand" onclick="{!c.handleCloseModal}">Cancel</button>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-backdrop slds-backdrop--open"></div>            
+        </aura:if>
+    </div>
+
+</aura:component>

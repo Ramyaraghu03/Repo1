@@ -1,0 +1,9 @@
+.THIS {
+    position:absolute;
+    height:100%;
+    Width:100%;
+}
+.THIS>div
+{
+    height:50%;
+}

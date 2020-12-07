@@ -1,0 +1,129 @@
+<aura:component controller ="CampaignTeamclass" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" access="global" >
+	
+    <!--Boolean attribute to indicate if modal is open or not 
+       default value is false as modal is closed when page is loaded 
+    -->
+    <aura:attribute name="isModalOpen" type="boolean" default="true"/>
+    <aura:attribute name="errorMessage" description="Message content, can be HTML"
+                   type="String" default="Message from MessageComponent.cmp"/>
+
+       <aura:attribute name="showError" type="boolean" default="false"/>
+    <aura:attribute name ="filename" type ="String" />
+    <aura:attribute type="String[]" name="headers" />
+    <aura:attribute type="List" name="data" />
+    <aura:attribute type="Boolean" name="fileTypeError" default="false" />
+    <aura:attribute name ="Teamlist" type= "MSVA_Team__c[]" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <lightning:spinner aura:id="csvSpinner" class="slds-hide" variant="brand" size="small"/>
+    
+    <div class="slds-m-around_xx-large">
+        
+        <!--Use aura:if tag to display/hide popup based on isModalOpen value-->  
+        <aura:if isTrue="{!v.isModalOpen}">
+             
+            <!-- Modal/Popup Box starts here-->
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <!-- Modal/Popup Box Header Starts here-->
+                    <header class="slds-modal__header">
+                        <lightning:buttonIcon iconName="utility:close"
+                                              onclick="{! c.closeModel }"
+                                              alternativeText="close"
+                                              variant="bare-inverse"
+                                              class="slds-modal__close"/>
+                       <div class="slds-text-heading--small">Please select a file to update Campaign Members and Assigned To (FAs)
+                    	<button class="slds-button slds-button slds-button--icon slds-p-bottom_x-small" aria-describedby=" Please select the Campaign Member CSV file for upload. The following fields are mandatory: Party Id, Branch Number" title=" Please select the Campaign Member CSV file for upload. The following fields are mandatory: Party Id, Branch Number" style="display:inline-block;">
+                          <lightning:icon iconName="utility:info" size="x-small" alternativeText="help"/>
+                           <span class="slds-assistive-text"> Please select the Campaign Member CSV file for upload. The following fields are mandatory: Party Id, Branch Number</span></button>
+                   </div>
+                        
+                    </header>
+                    <!--Modal/Popup Box Body Starts here-->
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+          <aura:if isTrue="{!v.showError}">
+        <!-- Show the message to ui -->
+         <div class="slds-notify slds-notify_toast slds-theme_error">
+            <span class="slds-assistive-text">error</span>
+            <div class="slds-notify__content">
+                <h5 class="slds-text-heading_small slds-align_absolute-center">Error Message </h5>
+                <br/>
+                <p class="slds-align_absolute-center">{!v.errorMessage}</p>                
+            </div>
+          </div>
+          </aura:if>
+                        <div>
+                        <input type="file" class="file" aura:id="file" accept=".csv, .CSV" /> {!v.filename} 
+                            
+                        
+                       </div>
+                       <div class="slds-m-top_x-small">
+                        <a href="www.google.com">Download Template</a>
+                        </div>
+                                  
+
+ <div class="slds-text-heading--small slds-text-align--center">Select Campaign Member owners</div>
+                         <hr style="margin-top:5px;margin-bottom:5px;"></hr>
+                    <lightning:layout horizontalAlign="center" multipleRows="true">
+                        <div class="slds-col slds-size_6-of-12">
+
+                            <lightning:layoutItem padding="around-small" size="12" flexibility="auto">
+                                <table class="slds-table slds-table_bordered slds-table_cell-buffer" border="1">
+                                    <thead>
+                                        <tr class="slds-text-title_caps">
+                                            <th class="slds-is-sortable slds-text-title--caps" aura:id="Team" scope="col" style="width: 75%;height:60px;">
+                                                <span class="slds-truncate slds-align_absolute-center" title="Teams">Teams</span>
+                                            </th>
+                                            <th scope="col" style="width: 25%">
+                                                <div class="slds-truncate slds-align_absolute-center" title="Selections">Selections</div>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody aura:id="tablebody">
+                                        <aura:iteration items="{!v.Teamlist}" var="Team" indexVar="key">
+                                            <tr class="slds-hint-parent">
+                                                <th scope="row" tabindex="0" class="" style="height:35px;width:75%;">
+                                                    <div class="slds-truncate slds-align_absolute-center" title="{!Team.Name}">
+                                                       {!v.Teamlist}
+                                                    </div>
+                                                </th>
+                                                <td role="gridcell" class="" style="width:25%">
+                                                    <div class="slds-truncate slds-align_absolute-center" title="{!teamDetail.teamName + ' Selections'}">
+                                                        <span>{!Team.Name} of {!Team.Name} Selected</span>
+                                                    </div>
+                                                </td>
+
+                                            </tr>
+                                        </aura:iteration>
+                                    </tbody>
+                                </table>
+                            </lightning:layoutItem>
+                        </div>
+                        <div></div>
+                        </lightning:layout>
+                        
+    
+    
+    
+    
+   
+            
+       
+
+              
+
+      
+                  
+                        
+                       
+                
+    
+               
+    </div>
+                 
+            
+                </div>
+            </section>
+        </aura:if>
+    </div>
+     
+</aura:component>

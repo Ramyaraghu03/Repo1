@@ -1,0 +1,18 @@
+<aura:component controller="ChangeOwnerClass"  implements="force:LightningQuickAction,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    <aura:attribute name = "Userlist" type = "String[]" />
+    <aura:attribute name ="selecteduser" type = "String" />
+   <aura:attribute name="Ownerupdated" type="String" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+           <lightning:card title="Change Owner" >
+               <lightning:select aura:id ="userpicklist" label = "Change Owner" value= "{!v.selecteduser}" onChange ="{!c.updateSelect}" >
+                   <aura:iteration items = "{!v.Userlist}" var = "u" >
+                       <option value = "{!u.Id}"> {!u.Name}</option>  
+                   </aura:iteration>
+               </lightning:select>
+               <footer class="slds-card__footer">
+        <lightning:button label="Save" onclick="{! c.changeOwner }"/>     
+    
+       <lightning:button label="Cancel" onclick="{!c.cancel}" />
+             </footer>
+    </lightning:card>
+</aura:component>

@@ -1,0 +1,4 @@
+<apex:page >
+  <h1>Congratulations: My Basic Template </h1>
+  <apex:insert name="body" />
+</apex:page>

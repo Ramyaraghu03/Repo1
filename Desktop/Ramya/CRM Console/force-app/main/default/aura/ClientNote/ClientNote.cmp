@@ -1,0 +1,89 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+<aura:attribute name="contactDate" type="Date"/>
+    <aura:attribute name="recordId" type="string" />
+    <div class="slds-modal__container">
+    <header class="slds-modal__header">
+        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Client Contact Note</h2>
+    </header>
+        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+            
+            <div class="slds-form-element">
+  <label class="slds-form-element__label" for="text-input-id-1">Subject</label>
+  <div class="slds-form-element__control">
+    <input type="text" id="text-input-id-1" class="slds-input"  />
+  </div>
+</div>
+            <div class="slds-form-element">
+<label class="slds-form-element__label" for="select-01">
+<abbr class="slds-required" title="required">*</abbr> Contact Type</label>
+<div class="slds-form-element__control">
+<div class="slds-select_container">
+<select class="slds-select" id="select-01" required="">
+
+<option>Email</option>
+<option>In Person</option>
+<option>Phone</option>
+</select>
+</div>
+</div>
+</div>
+<div class="slds-form-element">
+  <label class="slds-form-element__label" for="select-01">
+    <abbr class="slds-required" title="required">*</abbr> Category</label>
+  <div class="slds-form-element__control">
+    <div class="slds-select_container">
+      <select class="slds-select" id="select-01" required="">
+        <option value="">--None--</option>
+        <option>New Account</option>
+        <option>Invest</option>
+        <option>No Contact</option>
+            <option>Service</option>
+          <option>Relationship</option>
+          <option>Close</option>
+      </select>
+    </div>
+  </div>
+</div>  
+ 
+<form class="slds-form--inline">  
+    <div class="slds-form-element">
+        <abbr class="slds-required" title="required">*</abbr>
+<label class="slds-form-element__label" for="select-01">Client Contact Date</label>
+
+        <ui:inputDate aura:id="ccd" class="field" value="{!v.contactDate}" displayDatePicker="true"/>
+    </div>
+</form>           
+<div class="slds-form-element">
+  <label class="slds-form-element__label" for="text-input-id-1">Description</label>
+  <div class="slds-form-element__control">
+    <input type="text" id="text-input-id-1" class="slds-input"  />
+  </div>
+</div>
+            <b>Employee Attestation </b>
+            <p>By submitting this Client Contact note, you are attesting that contact was successfully made with the client, and the client reciprocated the communication.
+                
+              This Note formally records the communication exchange. Your attestation, recorded using this Note, will remove this account from escheatment processing and will be used as part of the Firm’s legal review when determining the escheatment eligibility of the account. 
+                
+              Please provide as much detail as possible.</p>
+            <div class="slds-form-element">
+  <div class="slds-form-element__control">
+    <span class="slds-checkbox">
+      <abbr class="slds-required" title="required">*</abbr>
+      <input type="checkbox" name="options" id="checkbox-3" value="checkbox-3" />
+      <label class="slds-checkbox__label" for="checkbox-3">
+        <span class="slds-checkbox_faux"></span>
+        <span class="slds-form-element__label">Employee Attestation</span>
+      </label>
+    </span>
+  </div>
+</div>
+            
+        </div>
+        <footer class="slds-modal__footer">
+        <lightning:button label="Save" onclick="{! c.savenotes }"/>    
+    
+       <lightning:button label="Cancel" onclick="{!c.cancel}" />
+        </footer>
+</div>
+    
+</aura:component>

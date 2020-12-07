@@ -1,0 +1,76 @@
+<aura:component controller="Engagementcmpclass" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	<aura:attribute name="Camplist" type="Campaign[]" />
+      
+    <aura:attribute name="title" type="String" default="Account Name"/>
+    <aura:attribute name = "options" type = "String[]" />
+     <aura:attribute name="objInfo" type="Campaign" default="{sobjectType : 'Campaign'}" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+    
+    <lightning:accordion >
+         
+     <lightning:accordionSection name="A" label="Ideas to Engage" >
+         <aura:iteration items="{!v.Camplist}" var="cam">
+       <lightning:card>
+           <aura:set attribute="title">
+               <div class="slds-grid slds-wrap">
+               <div class="slds-col slds-size_3-of-6">
+               <span>
+            <lightning:icon iconName="standard:call" alternativeText="Click to Call" size="small"/>
+                   <a href="{!'../../' + cam.Id}" aura:id="{!v.cam.Id}" onclick = "{!c.NavigaetetoAcc}" >{!cam.Name}</a>
+                  
+                 
+                   </span>
+               </div>
+                   <!--<div class="slds-col slds-size_1-of-6">
+                     <span>
+                        <ui:inputSelect  aura:id="Inputstatus" label="Change Status" class="dynamic" />
+                    </span>    
+                 </div> -->
+               </div>
+           </aura:set> 
+    
+           
+         <p class="slds-p-horizontal_small">
+               <div class ="slds-grid slds-wrap">
+               <div class="slds-col slds-size_2-of-6">
+               <span>
+            <div class="slds-card__body">
+                <span class="slds-badge">Start Date:
+
+                {!cam.StartDate}
+                </span>
+                   </div>
+                </span>
+                </div>
+                  
+                <div class="slds-col slds-size_2-of-6">
+                <span>
+                    <div class="slds-card__body">
+                    <span class="slds-badge">EndDate:
+                    {!cam.EndDate}
+                    </span>
+                    </div>
+                </span>
+                </div>
+                   
+               <div class="slds-col slds-size_2-of-6">
+                <span>
+                    <div class="slds-card__body">
+                    <span class="slds-badge">Type:
+                    {!cam.Type}
+                    </span>
+                    </div>
+                </span>
+                </div>    
+               
+               
+             
+             </div>
+        </p>
+         </lightning:card>
+         </aura:iteration>
+        </lightning:accordionSection>
+        
+   </lightning:accordion>
+</aura:component>

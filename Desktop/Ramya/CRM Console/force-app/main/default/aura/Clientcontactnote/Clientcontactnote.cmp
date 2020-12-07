@@ -1,0 +1,43 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+<aura:attribute name="contactDate" type="Date"/><aura:attribute name="recordId" type="string" />	
+ <div class="slds-modal__container">
+    <header class="slds-modal__header">
+        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Client Contact Note</h2>
+    </header>
+
+ <form class="slds-form--inline">  
+    <div class="slds-form-element">
+        <abbr class="slds-required" title="required">*</abbr>
+        <label class="slds-form-element__label" for="select-01">Client Contact Date</label>
+
+        <ui:inputDate aura:id="ccd" class="field" value="{!v.contactDate}" displayDatePicker="true"/>
+    </div>
+</form> 
+
+<b>Employee Attestation </b>
+            <p>By submitting this Client Contact note, you are attesting that contact was successfully made with the client, and the client reciprocated the communication.
+                
+              This Note formally records the communication exchange. Your attestation, recorded using this Note, will remove this account from escheatment processing and will be used as part of the Firm’s legal review when determining the escheatment eligibility of the account. 
+                
+              Please provide as much detail as possible.</p>
+            <div class="slds-form-element">
+  <div class="slds-form-element__control">
+    <span class="slds-checkbox">
+      <abbr class="slds-required" title="required">*</abbr>
+      <input type="checkbox" name="options" id="checkbox-3" value="checkbox-3" />
+      <label class="slds-checkbox__label" for="checkbox-3">
+        <span class="slds-checkbox_faux"></span>
+        <span class="slds-form-element__label">Employee Attestation</span>
+      </label>
+    </span>
+  </div>
+</div>
+            
+        
+        <footer class="slds-modal__footer">
+        <lightning:button label="Save" onclick="{! c.save }"/>    
+    
+       <lightning:button label="Cancel" onclick="{!c.cancel}" />
+        </footer>
+</div>
+</aura:component>

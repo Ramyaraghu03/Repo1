@@ -1,0 +1,3 @@
+<aura:event type="Component" description="Event fire when some one selects a value in picklist" >
+     <aura:attribute name="SelectedValue" type="string" description="The result of the Selection"/>
+</aura:event>

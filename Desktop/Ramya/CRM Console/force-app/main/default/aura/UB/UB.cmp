@@ -1,0 +1,25 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	<ltng:require styles="{!$Resource.SLD +
+             '/assets/styles/salesforce-lightning-design-system-ltng.css'}" />
+    <article class="slds-card">
+  <header class="slds-card__header slds-grid">
+    <div class="slds-media slds-media--center slds-has-flexi-truncate">
+      <div class="slds-media__figure">
+        <c:svg class="slds-icon" xlinkHref="/resource/SLDS/assets/icons/standard-sprite/svg/symbols.svg#contact" />
+      </div>
+      <div class="slds-media__body slds-truncate">
+        <h2>
+          <a href="javascript:void(0);" class="slds-text-link--reset">
+            <span class="slds-text-heading--small">Card Header</span>
+          </a>
+        </h2>
+      </div>
+    </div>
+    <div class="slds-no-flex">
+      <button class="slds-button slds-button--neutral slds-col--bump-left">New</button>
+    </div>
+  </header>
+  <div class="slds-card__body slds-text-align--center">Card Body (custom goes in here)</div>
+  <div class="slds-card__footer">Card Footer</div>
+</article>
+</aura:component>

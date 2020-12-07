@@ -1,0 +1,5 @@
+<apex:page standardController="Account" extensions="ExtTwo,ExtOne" showHeader="true">
+<apex:outputText value="{!food}">
+</apex:outputText>
+
+</apex:page>

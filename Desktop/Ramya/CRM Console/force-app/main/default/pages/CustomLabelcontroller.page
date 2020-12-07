@@ -1,0 +1,7 @@
+<apex:page controller="customLabelcontroller">
+<apex:form >
+<apex:pageBlock >
+Value stored in custom value is : {!customValue}
+</apex:PageBlock>
+</apex:form>
+</apex:page>

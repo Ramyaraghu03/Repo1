@@ -1,0 +1,18 @@
+<apex:page controller="OffsetController">
+  <apex:form >
+    <apex:pageblock >
+    Random 5 account records
+      <apex:pageblocktable value="{!accAllList}" var="accAll">
+        <apex:column value="{!accAll.name}"/>
+        <apex:column value="{!accAll.accountnumber}"/>
+      </apex:pageblocktable>
+    </apex:pageblock>
+    <apex:pageblock >
+    With Offset as  3,account records
+      <apex:pageblocktable value="{!accOffsetList}" var="accOffset">
+        <apex:column value="{!accOffset.name}"/>
+        <apex:column value="{!accOffset.accountnumber}"/>
+      </apex:pageblocktable>
+    </apex:pageblock>
+  </apex:form>
+</apex:page>

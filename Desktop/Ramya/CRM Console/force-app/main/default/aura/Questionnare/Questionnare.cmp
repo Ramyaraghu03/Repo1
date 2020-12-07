@@ -1,0 +1,13 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" access="global" >
+	
+    <lightning:accordion>
+    <lightning:accordionSection name="Wellness Assessment " label="Wellness Assessment">
+        <div class = "slds">
+		
+            <div class="slds-float-right" >This content will be positioned in the absolute right of its container</div>
+        </div>
+        
+        </lightning:accordionSection>
+           			
+        </lightning:accordion>
+</aura:component>

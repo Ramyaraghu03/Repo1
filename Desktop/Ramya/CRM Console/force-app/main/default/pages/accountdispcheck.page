@@ -1,0 +1,15 @@
+<apex:page standardController="Account" extensions="CasesControlleracc" recordSetVar="account" action="{!bumpCases}">
+<apex:form >
+       <apex:pageBlock title="All Attachments">
+            <apex:pageBlockButtons >
+                <apex:commandButton action="{!bumpCases}"  value="Download"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockTable value="{!selected}" var="acc">
+                <apex:column value="{!acc.Name}"/>
+                <apex:column value="{!acc.Type}"/>
+                <apex:column value="{!acc.Phone}"/>
+                <!--<apex:column value="{!acc.Owner}"/> -->
+            </apex:pageBlockTable> 
+        </apex:pageBlock>
+    </apex:form>    
+</apex:page>

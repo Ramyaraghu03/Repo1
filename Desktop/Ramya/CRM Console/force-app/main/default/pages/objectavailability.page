@@ -1,0 +1,7 @@
+<apex:page standardController="Customerirc__c">
+<apex:pageBlock rendered="{!$ObjectType.Customerirc__c.accessible}">
+<p> able to access objects</p>
+</apex:pageBlock>
+
+
+</apex:page>

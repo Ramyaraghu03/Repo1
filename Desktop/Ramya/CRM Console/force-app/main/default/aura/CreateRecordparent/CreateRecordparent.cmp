@@ -1,0 +1,48 @@
+<aura:component controller="addDeleteController" Implements="flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction">
+  <!--Init handler which is call doInit js function on component Load-->  
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+  
+ <!--Event handler for Add and Delete Row Event which is fire from Child Component-->    
+    <aura:handler name="DeleteRowEvt" event="c:DeleteRowEvt" action="{!c.removeDeletedRow}"/>
+    <aura:handler name="AddRowEvt" event="c:AddNewRowEvt" action="{!c.addNewRow}"/>
+ 
+ <!--Aura Attribute for store Contact Object List as Array-->    
+    <aura:attribute name="AccountList" type="Account[]"/> 
+ 
+ <!--Header Part-->        
+    <div class="slds-page-header">
+        <h1 class="slds-page-header__title">Create Multiple Contacts, With Add/Delete Rows Dynamically</h1>
+        <p class="slds-text-body_small slds-line-height_reset">By sfdcmonkey.com</p>
+    </div>
+    
+ <!--Table Part-->           
+    <table class="slds-table slds-table_bordered slds-table_cell-buffer"> 
+        <thead>
+            <tr class="slds-text-title_caps">
+                <th scope="col">
+                    <div class="slds-truncate">S.No</div>
+                </th>
+                <th scope="col">
+                    <div class="slds-truncate" title="Name"> Name</div>
+                </th>
+                <th scope="col">
+                    <div class="slds-truncate" title="Industry">Industry</div>
+                </th>
+                <th scope="col">
+                    <div class="slds-truncate" title="Phone">Phone</div>
+                </th>
+            </tr>
+        </thead>   
+        <tbody>
+           <!--Iterate the child Component for display Table rows 
+               with pass the List Item Index for track the Every child Component 
+               and pass each List Contact Instance -->         
+            <aura:iteration items="{!v.AccountList}" var="item" indexVar="index">
+                <c:CreateRecord AccountInstance="{!item}" rowIndex="{!index}" />
+            </aura:iteration>
+        </tbody>
+    </table>
+    <br/>
+    <!--Save Button which is call Save js function on click --> 
+    <button class="slds-button slds-button_brand" onclick="{!c.Save}">Save</button>
+</aura:component>

@@ -1,0 +1,20 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+<aura:dependency resource="markup://force:navigateToURL" type="EVENT"/>
+     <div>
+        <div>
+    <b>HELP AND FEEDBACK LINKS</b>
+            <div>
+     <lightning:button label="Review Tutorials,FAQ's and QRC's" 
+                              class="slds-m-top--medium"
+                              variant="brand"
+                              onclick="{!c.review}"/>
+                   <lightning:button label="Provide Feeback" 
+                              class="slds-m-top--medium"
+                              variant="brand"
+                              onclick="{!c.feed}"/>
+                
+         </div>
+            </div>
+    </div>
+    
+</aura:component>

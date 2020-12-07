@@ -1,0 +1,10 @@
+<aura:component controller ="Engagementcmpclass" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	 <aura:handler name ="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:method name="getStatusPicklist" action="{!c.getStatus}"
+                 access="public">
+        <aura:attribute name="options" type="String[]" />
+       </aura:method> 
+                          <ui:inputSelect  aura:id="Inputstatus" label="Change Status" class="dynamic" change="{!c.onPicklistChange}"/>
+                     
+    
+</aura:component>

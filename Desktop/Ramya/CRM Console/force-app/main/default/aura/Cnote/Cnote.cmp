@@ -1,0 +1,76 @@
+<aura:component  controller ="CreateClientnote" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	 <aura:attribute name="recordId" type="string" />
+       
+    <aura:attribute name="subject" type="List" default="New Account,Edit Account Details,Approval Request,Payment,Others"/>
+    <aura:attribute name ="selectedsubject" type ="string" />
+    <aura:attribute name="contacttype" type="String[]" default="Email,InPerson,Phone"/>
+    <aura:attribute name ="selectedctype" type ="string" />
+    <aura:attribute name="category" type="String[]" default="C1,C2,C3"/>
+    <aura:attribute name ="selectedcat" type ="string" />
+    <aura:attribute name="ClientContactDate" type="Date"/>
+    <aura:attribute name="Attest" type="Boolean" default ="false"/>
+    <aura:attribute name="newnotetask" type="string"/>
+    <aura:handler name="init" value="{!this}" action="{!c.loadsub}" />
+     <aura:handler name="init" value="{!this}" action="{!c.loadctype}" />
+     <aura:handler name="init" value="{!this}" action="{!c.loadcat}" />
+    <aura:method name="validatefields" action="{!c.validatefields}" />
+     {!v.recordId}
+ <div class="demo-only" style="height: 640px;">
+  <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_large">
+    <div class="slds-modal__container">
+     <header class="slds-modal__header">
+      <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">
+          <span class="slds-assistive-text">Close</span>
+        </button>
+          <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Client Contact Note</h2>
+      </header>
+        
+       <div class="slds-modal__content slds-p-around--medium">
+              <lightning:select name="subject"  aura:id="fieldstovalidate" label="Subject" required="true" messageWhenValueMissing ="Please enter Subject field" value="{!v.selectedsubject}">
+        <aura:iteration items="{!v.subject}" var="s">
+                <option text="{!s}" value="{!s.value}" selected="{!s.selected}"/>
+            </aura:iteration>
+    </lightning:select>
+     <lightning:input type ="date" aura:id="fieldstovalidate" label="ClientContact Date"
+                             
+                             value="{!v.ClientContactDate}" messageWhenValueMissing="Please enter Client Contact Date field"
+                             required="true"/>
+                      <lightning:select aura:id="fieldstovalidate" name="select" label="Contact Type" required="true" messageWhenValueMissing ="Please enter Contact Type field" value="{!v.selectedctype}">
+        <aura:iteration items="{!v.contacttype}" var="c">
+                <option text="{!c}" value="{!c.value}" selected="{!c.selected}"></option>
+            </aura:iteration>
+    </lightning:select>
+        
+                       <lightning:select aura:id="fieldstovalidate" name="category" label="Category" required="true" messageWhenValueMissing="Please enter Category field" value="{!v.selectedcat}">
+        <aura:iteration items="{!v.category}" var="cat">
+                <option text="{!cat}" value="{!cat.value}" selected="{!cat.selected}"></option>
+            </aura:iteration>
+    </lightning:select>
+                
+                <b>Employee Attestation </b>
+            <p>By submitting this Client Contact note, you are attesting that contact was successfully made with the client, and the client reciprocated the communication.
+                
+              This Note formally records the communication exchange. Your attestation, recorded using this Note, will remove this account from escheatment processing and will be used as part of the Firm’s legal review when determining the escheatment eligibility of the account. 
+                
+              Please provide as much detail as possible.</p>
+                <div class="slds-form-element">
+  <div class="slds-form-element__control">
+    <lightning:input  aura:id="fieldstovalidate" type="checkbox" label="Employee Attestation" name="Eattest" value="Attest" required = "true" messageWhenValueMissing ="Please check Employee Attestation"  />
+  </div>
+</div>
+            <footer class="slds-modal__footer">     
+            <lightning:button label="Save" 
+                              class="slds-m-top--medium"
+                              variant="brand"
+                              onclick="{!c.clickCreate}"/>
+                 <lightning:button label="Cancel" 
+                              class="slds-m-top--medium"
+                              variant="brand"
+                              onclick="{!c.cancel}"/>
+           </footer>
+        </div>     
+    </div>
+     </section>
+    </div>
+   
+</aura:component>

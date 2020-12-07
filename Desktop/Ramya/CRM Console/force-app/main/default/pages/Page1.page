@@ -1,0 +1,16 @@
+<apex:page controller="wizard_class"  >
+    <apex:form >
+        <apex:pageBlock title="Enter Account Details">
+        <apex:pageBlockButtons >
+            <apex:commandButton value="SaveAccount" action="{!saveaccount}"/>
+            <apex:commandButton value="Next" action="{!gotopage2}"/>
+        </apex:pageBlockButtons>
+            <apex:pageBlockSection >
+                <apex:inputField value="{!a.Name}"/>
+                <apex:inputField value="{!a.Type}"/> 
+                <apex:inputField value="{!a.Industry}"/>
+                <apex:inputField value="{!a.Rating}"/>
+            </apex:pageBlockSection>
+            </apex:pageBlock>
+    </apex:form>
+</apex:page>

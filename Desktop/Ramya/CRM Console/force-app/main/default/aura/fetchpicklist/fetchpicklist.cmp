@@ -1,0 +1,10 @@
+<aura:component controller = "Engagementcmpclass" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+<aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+   <aura:attribute name="objInfo" type="Campaign" default="{sobjectType : 'Campaign'}" />
+ <div class="slds-form-element">
+      <label class="slds-form-element__label" for="select-01">Select Status</label>
+      <div class="slds-select_container">
+         <ui:inputSelect  aura:id="CamStatus" class="slds-select"  change="{!c.onPicklistChange}"/>
+      </div>
+   </div>
+</aura:component>

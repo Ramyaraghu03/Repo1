@@ -1,0 +1,56 @@
+<aura:component controller = "leadlist" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	<aura:attribute name="Myleadlist" type="List" />
+    <aura:attribute name="totalmyleads" type="String" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+     <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+     <aura:attribute name="headerTitle" type="Aura.Component[]">
+         
+         
+        <h2>
+            <b>My Leads({!v.totalmyleads})</b>
+        </h2>
+    </aura:attribute>
+    <div>
+       
+         <lightning:card title="{!v.headerTitle}" iconName="utility:new_lead">
+           <aura:set attribute="actions">
+            <lightning:button label="Import Leads" 
+                              class="slds-m-top--medium"
+                              variant ="brand"
+                            onclick="{!c.importlead}"/>
+        </aura:set>   
+          
+       
+             <div>
+        <p class="slds-p-horizontal_small">
+            
+            <aura:iteration items="{!v.Myleadlist}" var="ml" >
+
+             
+                 <lightning:icon iconName="standard:lead" size="small" />  &nbsp; &nbsp;
+                
+                <a href= "javascript:void(0)"  >
+                    {!ml.Name}
+                    
+                </a>
+               <p>  &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;   {!ml.Rating}  </p>
+                
+               <p> &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;   {!ml.CreatedDate}</p> <br/>
+                 
+            
+            </aura:iteration>
+        </p>
+        </div> 
+         <p>
+         <footer class="slds-card__footer">
+    <a href="javascript:void(0)" onclick="{!c.viewmyleads}">View All
+      
+    </a>
+          
+  </footer>
+
+             </p>
+             
+    </lightning:card>
+    </div>
+</aura:component>

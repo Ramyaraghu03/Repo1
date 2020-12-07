@@ -1,0 +1,8 @@
+<apex:page controller="oapex" >
+    <apex:pageBlock title="Closed Won Opportunities">
+        <apex:pageBlockTable value="{!Ops}" var="o">
+            <apex:column value="{!o.Name}"/>
+             <apex:column value="{!o.Amount}"/>
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+</apex:page>

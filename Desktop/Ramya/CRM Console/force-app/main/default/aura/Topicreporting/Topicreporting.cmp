@@ -1,0 +1,50 @@
+<aura:component controller="Topiccontroller" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name ="recordid" type ="String"/>
+     <aura:attribute name="ListOftopics" type="Topic[]" />
+    <aura:attribute name ="topicsselected" type ="String[]" />
+   <aura:attribute name="selectedCount" type="integer" default="0"/>
+    <aura:attribute name="actid" type= "String" />
+    <aura:handler name="init" value="{!this}" action="{!c.doinit}"/>
+    <aura:handler event="c:NavigateEvt" action="{!c.Navigatepage}"/>
+   {!v.body}
+    <div>
+        <table class="slds-table slds-table--bordered slds-table--cell-buffer">
+        </table>
+        <thead>
+            <b> Topics Reporting </b> <br> </br>
+            <tr>
+      <th>Topics</th>
+      <th>Action</th>
+    </tr>
+        </thead>
+         <tbody>
+         <aura:iteration items="{!v.ListOftopics}" var="t">
+             <tr>
+             <td scope="row">
+                  <div class="slds-truncate" title="{!t.Name}"><a>{!t.Name}</a></div>
+               </td>
+                 <td scope="row" class="slds-text-align--right" style="width:3.25rem;">
+                  <div class="slds-form-element">
+                     <div class="slds-form-element__control">
+                        <label class="slds-checkbox">
+                           <ui:inputCheckbox text="{!t.Name}" aura:id="checktopics" value="" change="{!c.checkboxSelect}"/>
+                           <span class="slds-checkbox--faux"></span>
+                           <span class="slds-form-element__label text"></span>
+                        </label>
+                     </div>
+                  </div>
+               </td>
+                 
+                 </tr>
+             </aura:iteration>
+        </tbody>
+        <lightning:button label="RunReport" 
+                              class="slds-m-top--medium"
+                              variant="brand"
+                              onclick="{!c.runreport}"/>
+        <lightning:button label="Updatefield" 
+                              class="slds-m-top--medium"
+                              variant="brand"
+                              onclick="{!c.updatefield}"/>
+    </div>
+</aura:component>

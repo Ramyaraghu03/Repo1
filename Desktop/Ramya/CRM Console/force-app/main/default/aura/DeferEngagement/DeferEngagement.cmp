@@ -1,0 +1,103 @@
+<aura:component controller ="CommonPicklistController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	 <!--Boolean attribute to indicate if modal is open or not 
+       default value is false as modal is closed when page is loaded 
+    -->
+    <aura:attribute name="isModalOpen1" type="boolean" default="false"/>
+    <aura:attribute name="isModalOpen2" type="boolean" default="false"/>
+    <aura:attribute name="ObjectName" type="String" default="Account" access="global"/> 
+    <aura:attribute name="acc" type ="Account" default="{'sobjectType':'Account', 'Ramyaraghu03__Defer_Engagement_Reason__c':'','Ramyaraghu03__isDeferred__c' : ''}" />
+    <aura:attribute name ="isDeferred" type ="boolean" default ="false" />                                                  
+    <aura:attribute name ="EngagementReason" default="Ramyaraghu03__Defer_Engagement_Reason__c" type="String"  access="global"/>
+     <aura:attribute name="EngagementReasonPicklist" type="String[]" />
+    <aura:attribute name="selectedValue" type="String" />
+     <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:registerEvent name ="DeferEvt" type ="c.DeferredStatusEvent" />
+    <div class="slds-m-around_xx-large">
+        <lightning:button variant="brand"
+                          label="Defer Engagement"
+                          title="Defer Engagement"
+                          onclick="{!c.openModel }" />
+        <!--Use aura:if tag to display/hide popup based on isModalOpen value-->  
+       
+         
+ <aura:if isTrue = "{!v.isModalOpen1}">
+            <!-- Modal/Popup Box starts here  -->
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <!-- Modal/Popup Box Header Starts here-->
+                    <header class="slds-modal__header">
+                        <lightning:buttonIcon iconName="utility:close"
+                                              onclick="{! c.closeModel }"
+                                              alternativeText="close"
+                                              variant="bare-inverse"
+                                              class="slds-modal__close"/>
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Defer Engagement</h2>
+                    </header>
+                    <!--Modal/Popup Box Body Starts here-->
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                        <p>
+                            <lightning:select name ="Reason" label="Defer Engagement Reason" aura:id ="myReason" value="{!v.selectedValue}" onchange ="{!c.handleReasonchange}">
+                             <aura:iteration items="{!v.EngagementReasonPicklist}" var="item" >
+                                 <option value="{!item}" text = "{!item}" selected ="{!item.selected}"/>
+                             </aura:iteration>
+                             </lightning:select>
+                            
+                            
+                            
+                        </p>
+                    </div>
+                    <!--Modal/Popup Box Footer Starts here-->
+                    <footer class="slds-modal__footer">
+                        <lightning:button variant="neutral"
+                                          label="Cancel"
+                                          title="Cancel"
+                                          onclick="{! c.closeModel }"/>
+                        <lightning:button variant="brand"
+                                          label="Submit"
+                                          title="Submit"
+                                          onclick="{!c.submitDetails}"/>
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </aura:if>
+        <aura:if isTrue = "{!v.isModalOpen2}">
+       
+         <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    
+                    <header class="slds-modal__header">
+                        <lightning:buttonIcon iconName="utility:close"
+                                              onclick="{! c.closeModel }"
+                                              alternativeText="close"
+                                              variant="bare-inverse"
+                                              class="slds-modal__close"/>
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Defer Engagement</h2>
+                    </header>
+                    
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                        <p>
+                            Do you want to cancel the Deferred Engagment Status?
+                            
+                            
+                            
+                        </p>
+                    </div>
+                    
+                    <footer class="slds-modal__footer">
+                        <lightning:button variant="neutral"
+                                          label="Cancel"
+                                          title="Cancel"
+                                          onclick="{! c.closeModel }"/>
+                        <lightning:button variant="brand"
+                                          label="Submit"
+                                          title="Submit"
+                                          onclick="{!c.removedeferral}"/>
+                    </footer> 
+                </div> 
+            </section>
+         <div class="slds-backdrop slds-backdrop_open"></div>
+             
+</aura:if>        
+    </div>
+</aura:component>

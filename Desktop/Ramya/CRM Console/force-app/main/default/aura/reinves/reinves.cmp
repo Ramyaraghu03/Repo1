@@ -1,0 +1,345 @@
+<aura:component controller= "Accountstock" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute type="Account[]" name="acctList"/> 
+    <aura:attribute name="mycolumns" type="List"/>
+    <aura:attribute type="StockOptionsData__c[]" name="Stockoptionsdata"/>
+    <aura:attribute name="mystockoptionscolumns" type="List"/>
+    <aura:attribute name="sortedBy" type="String" default="Name"/>
+    <aura:attribute name="sortedDirection" type="String" default="asc"/>
+   <aura:handler name="init" value="{!this}" action="{!c.fetchAcc}"/>
+    <lightning:tabset selectedTabId="one">
+        <lightning:tab label="Stock Plan Information" id="one">
+      <!--  <div class="slds">
+        <div class="slds-scrollable" style="height: 10rem; width: 84rem">         
+        <div class="slds-section slds-is-open">
+        <button aria-controls="expando-unique-id" aria-expanded="true" class="slds-button slds-section__title-action">
+        
+         <h3 class="slds-section__title">
+      <span class="slds-truncate" title="Section Title">Microsoft</span> </h3> </button> -->
+      <lightning:accordion aura:id="accordion" activeSectionName="A" allowMultipleSectionsOpen="true">
+             <aura:iteration items = "{!v.acctList}" var = "acc" >
+              <lightning:accordionSection name="A" label="Stock Plan Attributes">
+           
+                       
+             <div class="slds-grid slds-scrollable " >
+                 
+                 <div class="slds-col slds-size_1-of-8">
+                <dl class="slds-list_stacked">
+                   <dt class="slds-item_label slds-text-color_weak slds-truncate" title="First Label">Company Name</dt>
+                   <dd class="slds-item_detail slds-truncate" title="{!acc.Name}">{!acc.Name}</dd> <br/>
+                   <dt class="slds-item_label slds-text-color_weak slds-truncate" title="Second Label">Term Date</dt>
+                   <dd class="slds-item_detail slds-truncate" title="Second description">11/03/2019 </dd> <br/>
+                   <dt class="slds-item_label slds-text-color_weak slds-truncate" title="Second Label">Officer Status </dt>
+                   <dd class="slds-item_detail slds-truncate" title="Second description">Active </dd> <br/>
+                </dl>
+                 </div> <br/>
+  <div class="slds-col slds-size_1-of-8">  
+                  <dl class="slds-list_stacked">
+<dt class="slds-item_label slds-text-color_weak slds-truncate" title="First Label">Company Status</dt>
+                   <dd class="slds-item_detail slds-truncate" title="Description for first label">TCS</dd> <br/>
+<dt class="slds-item_label slds-text-color_weak slds-truncate" title="Second Label">Term Status</dt>
+                   <dd class="slds-item_detail slds-truncate" title="Second description">- </dd> <br/>
+                   <dt class="slds-item_label slds-text-color_weak slds-truncate" title="Second Label">International Indicator </dt>
+                   <dd class="slds-item_detail slds-truncate" title="Second description">No </dd> <br/>
+</dl>
+                 </div>
+  <div class="slds-col slds-size_1-of-8">
+      <dl class="slds-list_stacked">
+<dt class="slds-item_label slds-text-color_weak slds-truncate" title="First Label">Available Wealth</dt>
+                   <dd class="slds-item_detail slds-truncate" title="Description for first label">500000</dd> <br/>
+<dt class="slds-item_label slds-text-color_weak slds-truncate" title="Second Label">Deceased</dt>
+                   <dd class="slds-item_detail slds-truncate" title="Second description">No </dd> <br/>
+                   <dt class="slds-item_label slds-text-color_weak slds-truncate" title="Second Label">Trade Restrictions </dt>
+                   <dd class="slds-item_detail slds-truncate" title="Second description">yes </dd> <br/>
+</dl>
+                 </div>
+                 <div class="slds-col slds-size_1-of-8"> 
+                     <dl class="slds-list_stacked">
+<dt class="slds-item_label slds-text-color_weak slds-truncate" title="First Label">Potential wealth </dt>
+                   <dd class="slds-item_detail slds-truncate" title="Description for first label">800000</dd> <br/>
+<dt class="slds-item_label slds-text-color_weak slds-truncate" title="Second Label">PKey</dt>
+                   <dd class="slds-item_detail slds-truncate" title="Second description">1487556 </dd> <br/>
+                         <dt class="slds-item_label slds-text-color_weak slds-truncate" title="Second Label">W8/W9 on File </dt>
+                   <dd class="slds-item_detail slds-truncate" title="Second description">Ys </dd> <br/>
+</dl>
+                 </div>
+  <div class="slds-col slds-size_1-of-8"> 
+      <dl class="slds-list_stacked">
+<dt class="slds-item_label slds-text-color_weak slds-truncate" title="First Label">Total Wealth</dt>
+                   <dd class="slds-item_detail slds-truncate" title="Description for first label">10000000</dd> <br/>
+<dt class="slds-item_label slds-text-color_weak slds-truncate" title="Second Label">PUID</dt>
+                   <dd class="slds-item_detail slds-truncate" title="Second description">- </dd> <br/>
+                   <dt class="slds-item_label slds-text-color_weak slds-truncate" title="Second Label">Sweep Fund </dt>
+                   <dd class="slds-item_detail slds-truncate" title="Second description">BDP </dd> <br/>
+</dl>
+                 </div>
+  <div class="slds-col slds-size_1-of-8"> 
+      <dl class="slds-list_stacked">
+<dt class="slds-item_label slds-text-color_weak slds-truncate" title="First Label"># Shares Granted</dt>
+                   <dd class="slds-item_detail slds-truncate" title="Description for first label">50</dd> <br/>
+<dt class="slds-item_label slds-text-color_weak slds-truncate" title="Second Label"> Total Salary</dt>
+                   <dd class="slds-item_detail slds-truncate" title="Second description">500000</dd> <br/>
+                   <dt class="slds-item_label slds-text-color_weak slds-truncate" title="Second Label">10b5-1 </dt>
+                   <dd class="slds-item_detail slds-truncate" title="Second description">- </dd> <br/>
+</dl>
+                 </div>
+                 <div class="slds-col slds-size_1-of-8">
+                     <dl class="slds-list_stacked">
+                         <dt class="slds-item_label slds-text-color_weak slds-truncate" title="First Label">Plan/Product Type</dt>
+                   <dd class="slds-item_detail slds-truncate" title="Description for first label">Options</dd> <br/>
+<dt class="slds-item_label slds-text-color_weak slds-truncate" title="Second Label">Total compensation</dt>
+                   <dd class="slds-item_detail slds-truncate" title="Second description">12500 </dd> <br/>
+                   
+</dl>
+                 </div>
+  <div class="slds-col slds-size_1-of-8"> 
+      <dl class="slds-list_stacked">
+<dt class="slds-item_label slds-text-color_weak slds-truncate" title="First Label">Hire Date</dt>
+          <dd class="slds-item_detail slds-truncate" title="Description for first label">03/11/2013</dd> <br/>
+<dt class="slds-item_label slds-text-color_weak slds-truncate" title="Second Label">Highly Compensated</dt>
+                   <dd class="slds-item_detail slds-truncate" title="Second description">No</dd> <br/>
+                   
+</dl>
+                 </div>
+</div>
+                 
+                       
+                     
+            
+ </lightning:accordionSection>
+           
+                    
+                   
+          </aura:iteration>                 
+            </lightning:accordion>
+           
+            
+<div aura:id = "assignment attributes" class="slds-section slds-is-open">
+         <button aria-controls="expando-unique-id" aria-expanded="true" class="slds-button slds-section__title-action">
+         <h3 class="slds-section__title">
+         <span class="slds-truncate" title="Section Title">Assignment Attributes </span> </h3> </button>
+         <div class="slds-grid">
+             <div class="slds-col slds-size_1-of-8">
+         <dl class="slds-list_stacked">
+         <dt class="slds-item_label slds-text-color_weak slds-truncate" title="First Label">Date Assigned</dt><br/>
+             <dd class="slds-item_detail slds-truncate" title="Description for first label">03/11/2019</dd> <br/>
+         
+         </dl>
+    </div>
+    
+    <div class="slds-col slds-size_1-of-8">
+         <dl class="slds-list_stacked">
+         <dt class="slds-item_label slds-text-color_weak slds-truncate" title="First Label"># Days Assigned</dt><br/>
+             <dd class="slds-item_detail slds-truncate" title="Description for first label">45</dd> <br/>
+         
+         </dl>
+    </div>
+      <div class="slds-col slds-size_1-of-8">
+         <dl class="slds-list_stacked">
+         <dt class="slds-item_label slds-text-color_weak slds-truncate" title="First Label"># Days In Stage</dt><br/>
+         <dd class="slds-item_detail slds-truncate" title="Description for first label">5</dd> <br/>
+         
+         </dl>
+    </div>
+       <div class="slds-col slds-size_1-of-8">
+         <dl class="slds-list_stacked">
+         <dt class="slds-item_label slds-text-color_weak slds-truncate" title="First Label">Application Campaign</dt><br/>
+         <dd class="slds-item_detail slds-truncate" title="Description for first label">50Campaign</dd> <br/>
+         
+         </dl>
+    </div>      
+            </div>
+            </div>
+ <div aura:id = "Participant Event" class="slds-section slds-is-open">
+         <button aria-controls="expando-unique-id" aria-expanded="true" class="slds-button slds-section__title-action">
+         <h3 class="slds-section__title">
+             <span class="slds-truncate" title="Section Title">Participant Event/Profile </span> </h3> </button>
+         <div class="slds-grid">
+             <div class="slds-col slds-size_1-of-8">
+         <dl class="slds-list_stacked">
+         <dt class="slds-item_label slds-text-color_weak slds-truncate" title="First Label">Next Vest Type</dt><br/>
+             <dd class="slds-item_detail slds-truncate" title="Description for first label">Options</dd> <br/>
+         <dt class="slds-item_label slds-text-color_weak slds-truncate" title="First Label">Next Option Expiration Amount</dt><br/>
+             <dd class="slds-item_detail slds-truncate" title="Description for first label">3000</dd> <br/>
+         </dl>
+    </div>
+    
+    <div class="slds-col slds-size_1-of-8">
+         <dl class="slds-list_stacked">
+         <dt class="slds-item_label slds-text-color_weak slds-truncate" title="First Label">Next Vest Date</dt><br/>
+             <dd class="slds-item_detail slds-truncate" title="Description for first label">11/03/2020</dd> <br/>
+          <dt class="slds-item_label slds-text-color_weak slds-truncate" title="First Label">Most recent Transaction Amount</dt><br/>
+             <dd class="slds-item_detail slds-truncate" title="Description for first label">5000</dd> <br/>
+         </dl>
+    </div>
+      <div class="slds-col slds-size_1-of-8">
+         <dl class="slds-list_stacked">
+         <dt class="slds-item_label slds-text-color_weak slds-truncate" title="First Label">Next Vest Amount</dt><br/>
+         <dd class="slds-item_detail slds-truncate" title="Description for first label">5000</dd> <br/>
+         <dt class="slds-item_label slds-text-color_weak slds-truncate" title="First Label">Most Recent Transaction Date</dt><br/>
+             <dd class="slds-item_detail slds-truncate" title="Description for first label">03/11/2019</dd> <br/>
+         </dl>
+    </div>
+       <div class="slds-col slds-size_1-of-8">
+         <dl class="slds-list_stacked">
+         <dt class="slds-item_label slds-text-color_weak slds-truncate" title="First Label">Previous Vest Type</dt><br/>
+         <dd class="slds-item_detail slds-truncate" title="Description for first label">Options</dd> <br/>
+         
+         </dl>
+    </div> 
+         <div class="slds-col slds-size_1-of-8">
+         <dl class="slds-list_stacked">
+         <dt class="slds-item_label slds-text-color_weak slds-truncate" title="First Label">Previous Vest Date</dt><br/>
+             <dd class="slds-item_detail slds-truncate" title="Description for first label">03/01/2019</dd> <br/>
+         
+         </dl>
+    </div>  
+           <div class="slds-col slds-size_1-of-8">
+         <dl class="slds-list_stacked">
+         <dt class="slds-item_label slds-text-color_weak slds-truncate" title="First Label">Previous Vest Amount</dt><br/>
+             <dd class="slds-item_detail slds-truncate" title="Description for first label">500</dd> <br/>
+         
+         </dl>
+    </div> 
+            <div class="slds-col slds-size_1-of-8">
+         <dl class="slds-list_stacked">
+             <dt class="slds-item_label slds-text-color_weak slds-truncate" title="First Label">First Grant/Award Date</dt><br/>
+             <dd class="slds-item_detail slds-truncate" title="Description for first label">03/11/2019</dd> <br/>
+         
+         </dl>
+    </div> 
+             
+                 <div class="slds-col slds-size_1-of-8">
+         <dl class="slds-list_stacked">
+             <dt class="slds-item_label slds-text-color_weak slds-truncate" title="First Label">Next option Expiration Date</dt><br/>
+             <dd class="slds-item_detail slds-truncate" title="Description for first label">03/11/2019</dd> <br/>
+         
+         </dl>
+    </div>
+            </div>
+            </div>
+    <div aura:id = "Account Details" class="slds-section slds-is-open">
+         <button aria-controls="expando-unique-id" aria-expanded="true" class="slds-button slds-section__title-action">
+         <h3 class="slds-section__title">
+             <span class="slds-truncate" title="Section Title">Account Details </span> </h3> </button>
+         <div class="slds-grid">
+        <div class="slds-col slds-size_1-of-8">
+         <dl class="slds-list_stacked">
+         <dt class="slds-item_label slds-text-color_weak slds-truncate" title="First Label">CSX Total Balance</dt><br/>
+             <dd class="slds-item_detail slds-truncate" title="Description for first label">100000</dd> <br/>
+         
+         </dl>
+       </div> 
+        <div class="slds-col slds-size_1-of-8">
+         <dl class="slds-list_stacked">
+         <dt class="slds-item_label slds-text-color_weak slds-truncate" title="First Label">CSX Cash Balance</dt><br/>
+             <dd class="slds-item_detail slds-truncate" title="Description for first label">5000</dd> <br/>
+         
+         </dl>
+       </div>
+          <div class="slds-col slds-size_1-of-8">
+         <dl class="slds-list_stacked">
+         <dt class="slds-item_label slds-text-color_weak slds-truncate" title="First Label">CSX Account Number</dt><br/>
+             <dd class="slds-item_detail slds-truncate" title="Description for first label">ATQF5000</dd> <br/>
+         
+         </dl>
+       </div> 
+         <div class="slds-col slds-size_1-of-8">
+         <dl class="slds-list_stacked">
+         <dt class="slds-item_label slds-text-color_weak slds-truncate" title="First Label">SPBA Account Balance</dt><br/>
+             <dd class="slds-item_detail slds-truncate" title="Description for first label">5000</dd> <br/>
+         
+         </dl>
+       </div>  
+        <div class="slds-col slds-size_1-of-8">
+         <dl class="slds-list_stacked">
+         <dt class="slds-item_label slds-text-color_weak slds-truncate" title="First Label">MSAI Account Balance</dt><br/>
+             <dd class="slds-item_detail slds-truncate" title="Description for first label">5000</dd> <br/>
+         
+         </dl>
+       </div>          
+        </div>
+            </div>
+        </lightning:tab>
+        <lightning:tab label="Plan Profile" id="two">
+           <div class="slds-box" >
+               <P><b>Plan Profile</b> </P>
+               <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped">
+                   <th class="slds-cell-wrap">
+               <lightning:datatable data="{! v.Stockoptionsdata }"
+                         columns="{! v.mystockoptionscolumns }"
+                         keyField="id"
+                         hideCheckboxColumn="true"
+                                    onrowaction="{! c.handleRowAction }"/>
+                       </th>
+               </table>
+            </div>
+        </lightning:tab>
+        <lightning:tab label="Participant Wealth" id="three">
+              <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped">
+  <thead>
+    <tr class="slds-line-height_reset">
+      <th class="" scope="col">
+          <div class="slds-truncate" title="Participant Wealth">Participant Wealth   <b></b>Unvested Wealth  </div>
+       
+      </th>
+      </tr>
+                  </thead>
+               <lightning:datatable data="{! v.Stockoptionsdata }"
+                         columns="{! v.mystockoptionscolumns }"
+                         keyField="id"
+                         hideCheckboxColumn="true"
+                                    onrowaction="{! c.handleRowAction }"/>
+
+               </table>
+        </lightning:tab>
+         <lightning:tab label="Transcation History" id="four">
+            Four Content !
+        </lightning:tab>
+         <lightning:tab label="Company Details" id="five">
+            <lightning:accordion>
+               <aura:iteration items="{!v.acctList}" var="acc">
+                <lightning:accordionSection name="{!acc.name}" label="{!acc.Name}">
+               <aura:set attribute="body">
+                    
+                    <table class="slds-table slds-table--bordered slds-table--cell-buffer slds-table--striped slds-max-medium-table--stacked-horizontal"
+                           role="grid">
+                        <thead>
+                            <tr>
+                                <th class="slds-is-sortable slds-cell-wrap" scope="col">
+                                    Company Name
+                                </th>
+                                <th class="slds-is-sortable slds-cell-wrap" scope="col">
+                                    Billing State
+                                </th>
+                                <th class="slds-is-sortable slds-cell-wrap" scope="col">
+                                   Website
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <aura:iteration items="{!v.acctList}" var="a">
+                                <tr class="slds-hint-parent">
+                                    <td role="gridcell" class="slds-cell-wrap">
+                                        <div class="">{!a.Name}</div>
+                                    </td>
+                                    <td role="gridcell" class="slds-cell-wrap">
+                                        <div class="" data-label="Role">{!a.BillingAddress}</div>
+                                    </td>
+                                    <td role="gridcell" class="slds-cell-wrap">
+                                        <div class="" data-label="Role">{!a.Website}</div>
+                                    </td>
+                                    
+                                </tr>
+                                
+                            </aura:iteration>
+                        </tbody>
+                    </table>
+                </aura:set>
+                </lightning:accordionSection>
+                </aura:iteration>
+                </lightning:accordion>
+        </lightning:tab>
+          
+        </lightning:tabset>
+       
+</aura:component>

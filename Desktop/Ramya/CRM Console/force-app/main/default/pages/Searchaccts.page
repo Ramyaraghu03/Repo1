@@ -1,0 +1,13 @@
+<apex:page standardController="Account" extensions="Searchaccts" >
+<apex:form >
+<apex:pageBlock >
+<apex:inputText value="{!SearchString}" />
+<apex:commandButton value="Submit" action="{!SearchAcc}" />
+<apex:PageBlockTable value="{!accList}" var="a" >
+<apex:column value="{!a.name}" />
+<apex:column value="{!a.accountnumber}" />
+<apex:column value="{!a.Industry}" />
+</apex:pageBlockTable>
+</apex:PageBlock>
+</apex:form>
+</apex:page>

@@ -1,0 +1,27 @@
+<apex:page standardController="Opportunity" recordSetVar="opps"
+tabstyle="account" extensions="tenPageSizeExt">
+<apex:PageBlock Title="Select required Opportunities" mode="edit">
+<apex:form >
+<apex:pageBlockTable value="{!Opportunity}" var="a">
+<apex:column value="{!a.name}"/>
+<apex:column headerValue="Stage">
+<apex:SelectCheckboxes value="{!a.StageName}" />
+</apex:column>
+<apex:PageBlock >
+<apex:pageBlockButtons location="top">
+<apex:commandButton value="Go" action="{!edit}"/>
+</apex:pageBlockButtons>
+</apex:PageBlock>
+</apex:PageBlockTable>
+<apex:pageBlockTable value="{!selected}" var="opp">
+<apex:column value="{!opp.name}"/>
+<apex:column headerValue="Stage">
+<apex:inputField value="{!opp.StageName}"/>
+</apex:column>
+<apex:column headerValue="CloseDate">
+<apex:inputField value="{!opp.CloseDate}"/>
+</apex:column>
+</apex:pageBlockTable>
+</apex:form>
+</apex:pageBlock>
+</apex:page>

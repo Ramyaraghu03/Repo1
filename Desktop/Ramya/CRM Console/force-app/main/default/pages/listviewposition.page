@@ -1,0 +1,16 @@
+<apex:page standardController="Account" recordSetVar="accounts" tabStyle="Account">
+<apex:pageBlock title="Viewing Positions">
+<apex:form >
+<apex:panelGrid columns="2">
+<apex:outputLabel value="View Pos"/>
+<apex:selectList value="{!filterid}" size="1">
+<apex:actionSupport event="onchange" reRender="list"/>
+<apex:selectOptions value="{!listviewoptions}"/>
+</apex:selectList>
+</apex:panelGrid>
+<apex:pageBlockSection >
+<apex:commandButton value="Go" action="{!list}"/>
+</apex:pageBlockSection>
+</apex:form>
+</apex:pageBlock>
+</apex:page>

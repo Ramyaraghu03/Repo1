@@ -1,0 +1,8 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name = "isStockPlan" type ="boolean" />	
+    <aura:attribute name = "isFinWell" type ="boolean" />	
+    <lightning:tabset aura:id="subTabSetinfo" selectedTabId="StockPlan" variant ="scoped">
+        <lightning:tab label="Stock Plan" id="StockPlan" class="slds-show" />
+         <lightning:tab label="Financial Wellness" id="FinWell" class="slds-hide" />   
+    </lightning:tabset>
+</aura:component>

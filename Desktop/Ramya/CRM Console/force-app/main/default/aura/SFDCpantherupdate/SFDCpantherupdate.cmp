@@ -1,0 +1,80 @@
+<aura:component controller = "pantherupdatectrlr" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    <aura:attribute name = "contactlist" type = "List" />
+    <aura:attribute name ="displaysection" type ="String" />
+    <aura:attribute name ="contact" type = "contact" default =" { 'sObjectType' : 'Contact',
+                                                                  'FirstName' : '',
+                                                                  'LastName' : '',
+                                                                  'Email' : '',
+                                                                  'phone' : ''
+                                                               }" >
+    </aura:attribute>
+  
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <div class = "slds-gird slds-wrap">
+        <lightning:card title = "ContactDetails">
+            <aura:set attribute="actions">
+                <!-- <lightning:button  variant = "brand"  label="New" name = "new" onclick ="{!c.newContact}"/>  -->
+                <lightning:button variant ="brand" label = "New"  name = "new" onclick = "{!c.openModal}" />
+                <lightning:button  variant = "brand" label="Edit" name = "edit" onclick ="{!c.editContact}"/>
+                <lightning:button  variant = "destructive" label="Delete" name = "delete" onclick ="{!c.deleteContact}"/>
+            
+            
+            </aura:set>
+            <p class="slds-p-horizontal_small">
+            <div aura:id ="recordViewForm"  class="{!if(v.displaysection == 'viewrecord','slds-show','slds-hide')}">    
+            <aura:iteration items = "{!v.contactlist}" var = "ct" >
+            <lightning:recordViewForm recordId = "{!ct.Id}" objectApiName= "Contact"> 
+            <div class ="slds-box slds-theme_defalut" aura:id="recordViewForm">  
+                <lightning:input type ="checkbox" value ="{!ct.Id}" label ="Mark for Deletion" aura:id="ckbox" />
+                <lightning:outputField fieldName ="FirstName"/>   
+                 <lightning:outputField fieldName ="LastName"/> 
+                <lightning:outputField fieldName ="Phone"/> 
+                 
+            </div>
+            </lightning:recordViewForm>
+                <br/>        
+           </aura:iteration>
+           </div>     
+           <div aura:id ="recordEditForm"  class="{!if(v.displaysection == 'editrecord','slds-show','slds-hide')}">    
+           <aura:iteration items = "{!v.contactlist}" var = "ct" >
+           <div class ="slds-box slds-theme_defalut" >    
+                 <lightning:input value ="{!ct.FirstName}"/>   
+                 <lightning:input value ="{!ct.LastName}"/> 
+                <lightning:input type = "tel" value ="{!ct.Phone}" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"/> 
+                 
+            </div>
+            <br/>        
+           </aura:iteration>
+           </div>     
+           </p>       
+       </lightning:card>
+  
+     <div>
+        <section aura:id="contactModal" role="dialog" tabindex="-1" aria-labelledby="contactModalHeading" aria-modal="true" aria-describedby="contactModalBody" class="slds-modal">
+            <!-- Modal Container -->
+            <div class="slds-modal__container">
+                <!-- Modal Header ( consists of close button and heading of modal ) -->
+                <header class="slds-modal__header">
+                    <lightning:buttonIcon class="slds-modal__close" alternativeText="Close" iconName="utility:close" onclick="{!c.closeModal}" variant="bare-inverse" size="large"></lightning:buttonIcon>
+                    <h2 id="contactModalHeading" class="slds-text-heading_medium slds-hyphenate">New Contact</h2>
+                </header>
+                <!-- Modal Body ( consists of form ) -->
+                <div class="slds-modal__content slds-p-around_medium" id="contactModalBody">
+                    <lightning:input label="First Name" value="{!v.contact.FirstName}" />
+                    <lightning:input label="Last Name" required="true" value="{!v.contact.LastName}" />
+                    <lightning:input label="Email" value="{!v.contact.Email}" />
+                    <lightning:input label="Phone" value="{!v.contact.Phone}" />
+                </div>
+                <!-- Modal Footer ( consists of cancel and save buttons ) -->
+                <footer class="slds-modal__footer">
+                    <lightning:button onclick="{!c.closeModal}" variant="neutral">Cancel</lightning:button>
+                    <lightning:button onclick="{!c.createContact}" variant="brand" >Save</lightning:button>
+                </footer>
+            </div>
+        </section>
+        <!-- Modal Backdrop -->
+        <div aura:id="contactModalBackdrop" class="slds-backdrop"></div>
+    </div>
+           
+    </div>
+</aura:component>

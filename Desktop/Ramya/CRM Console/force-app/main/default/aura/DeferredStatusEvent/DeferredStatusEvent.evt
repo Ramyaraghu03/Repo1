@@ -1,0 +1,4 @@
+<aura:event type="APPLICATION" description="Event template">
+    <aura:attribute name = "DeferredReason" type ="String" default="" />
+    <aura:attribute name = "DeferredDate" type ="Date" default=""/>
+</aura:event>

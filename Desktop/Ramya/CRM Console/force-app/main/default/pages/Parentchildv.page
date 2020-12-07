@@ -1,0 +1,11 @@
+<apex:page controller="ParentChild">
+<apex:form >
+<apex:commandButton value="Click" action="{!Show}"/>
+<apex:dataList value="{!acc}" var="a" >
+<apex:outputLabel >Account Name :  {!a.name}    Industry  : {!a.Industry} </apex:outputLabel>
+<apex:dataList value="{!a.contacts}" var="b">
+{!b.Email}
+</apex:dataList>
+</apex:dataList>
+</apex:form>
+</apex:page>

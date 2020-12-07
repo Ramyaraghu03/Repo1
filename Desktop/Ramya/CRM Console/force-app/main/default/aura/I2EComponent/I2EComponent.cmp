@@ -1,0 +1,55 @@
+<aura:component controller = "I2Econtroller" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    <aura:attribute name = "IdeastoEngage" type = "sObject"/>
+    <aura:attribute name = "TalkingPoints" type = "TalkingPoints__c" />
+    <aura:attribute name = "ListTalkingPoints" type = "TalkingPoints__c[]" />
+    <aura:attribute name="accountId" type="Id" />
+    <aura:attribute name = "ListIdeastoEngage" type = "List" />
+    <aura:attribute name="Spinner" type="Boolean" default="False"/>
+    <aura:attribute name = "displayMsg" type ="String"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler event="force:refreshView" action="{!c.doInit}"/>
+    <!--<ui:button label="Get Talking Points" press="{!c.myAction}"/> -->
+     <lightning:accordion >
+     <lightning:accordionSection name="A" label="Ideas to Engage"  >
+         <aura:if isTrue = "{!v.Spinner}">
+             <lightning:spinner variant="brand"  size="small"/> 
+             <aura:set attribute = "else">
+                  <div class="slds-float_right">
+                     <lightning:button variant="brand" label="New" title="New TalkingPoint" onclick="{! c.AddNewPoint }" />
+                </div>
+            <div class="slds-grid slds-grid_vertical slds-scrollable" style ="width :100%">
+             
+                <aura:if isTrue = "{!not(empty(v.ListTalkingPoints))}">
+                    <lightning:layout multipleRows="true" >
+              <aura:iteration items = "{!v.ListTalkingPoints}" var = "tl" >
+                  <div class="slds-p-bottom_x-small slds-col slds-size_1-of-1" >
+             <lightning:layoutItem class = "slds-box slds-box_small" size ="12">
+             <lightning:card iconName = "standard:call" >
+                <aura:set attribute = "title">
+                {!tl.Name}
+                   
+                 </aura:set>
+                <aura:set attribute = "actions">
+                 <c:I2EStatus recordId="{!tl.Id}" />  
+                 </aura:set>
+                 
+            
+      
+      
+                 </lightning:card>
+                    
+                 </lightning:layoutItem>
+                  </div>
+          </aura:iteration> 
+                    </lightning:layout>
+                    <aura:set attribute="else"> 
+                        <div class="slds-col slds-align_absolute-center">
+                            <h1>{!v.displayMsg}</h1>  </div>          
+                    </aura:set>
+                    </aura:if>
+                 </div>
+                  </aura:set>
+         </aura:if>
+         </lightning:accordionSection>
+     </lightning:accordion>
+</aura:component>

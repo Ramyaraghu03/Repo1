@@ -1,0 +1,24 @@
+<apex:page standardController="Contact" extensions="contactCheckbox" showheader="false">
+
+<apex:form >
+<center>
+<br/>
+<br/>
+        <apex:outputLabel value="Account Name"> &nbsp;&nbsp;
+                
+         <apex:inputField value="{!Contact.AccountId}" required="false" id="lid"><br/><br/><br/>
+         <apex:actionsupport event="onchange" rerender="check"/>
+         </apex:inputField>
+                
+         </apex:outputLabel>
+         <apex:outputPanel id="check">
+         <apex:outputLabel value="Contacts:" rendered="{!contact.AccountId!=null}">
+         <apex:selectCheckboxes value="{!selectedAccount}">
+            <apex:selectOptions value="{!items}"/>
+        </apex:selectCheckboxes><br/>
+        </apex:outputLabel>
+        </apex:outputPanel>
+</center>
+</apex:form>
+
+</apex:page>

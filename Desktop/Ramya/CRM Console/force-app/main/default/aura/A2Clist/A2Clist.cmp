@@ -1,0 +1,15 @@
+<aura:component controller ="A2Ccontroller" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" access="global" >
+    <aura:attribute name = "acclist" type = "Account[]" />
+    <aura:attribute name ="mycolumns" type = "List"/>
+    <aura:attribute name ="sortby" type ="String" default ="Name" />
+    <aura:attribute name = "sortDirection" type = "String" default ="asc" />
+    <aura:handler name="init" value="{!this}" action="{!c.fetchAccounts}"/>
+    
+    <lightning:datatable data="{!v.acclist}" 
+                         columns="{!v.mycolumns}" 
+                         keyField="id"
+                         hideCheckboxColumn="true"
+                         onsort="{!c.updateColumnSorting}"
+                         sortedBy="{!v.sortby}"  
+                         sortedDirection="{!v.sortDirection}"/>
+</aura:component>

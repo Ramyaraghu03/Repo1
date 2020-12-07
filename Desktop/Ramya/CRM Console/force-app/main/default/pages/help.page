@@ -1,0 +1,5 @@
+<apex:page >
+  <!-- Begin Default Content REMOVE THIS -->
+  <h1>Help for Position object</h1>
+  <p>Position object is used to track positions</p>
+</apex:page>

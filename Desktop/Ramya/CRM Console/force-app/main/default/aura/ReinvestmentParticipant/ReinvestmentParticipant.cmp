@@ -1,0 +1,27 @@
+<aura:component implements="force:LightningQuickAction,flexipage:availableForRecordHome,force:hasRecordId"  >
+
+    <lightning:card  title="Reinvestment Participant Information">
+     <lightning:recordViewForm recordId="{!v.recordId}" objectApiName="Account">
+                <lightning:layout multipleRows="true">
+                    <lightning:layoutItem flexibility="auto" size="6">
+                        <lightning:outputField fieldName="Ramyaraghu03__Potential_Wealth__c" />
+                    </lightning:layoutItem>
+                    <lightning:layoutItem flexibility="auto"  size="6">
+                        <lightning:outputField fieldName="Ramyaraghu03__Available_Wealth__c" />
+                    </lightning:layoutItem>
+                    <lightning:layoutItem size="12" padding="around-small"></lightning:layoutItem>
+                    <lightning:layoutItem flexibility="auto"  size="6">
+                        <lightning:outputField fieldName="Ramyaraghu03__Program_Name__c" />
+                    </lightning:layoutItem>
+                    <lightning:layoutItem flexibility="auto"  size="6">
+                        <lightning:outputField fieldName="Ramyaraghu03__C_Suite_Officer_Status__c" />
+                    </lightning:layoutItem>
+                  
+                 
+                </lightning:layout>
+            </lightning:recordViewForm>
+
+           
+        
+    </lightning:card>
+</aura:component>

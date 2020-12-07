@@ -1,0 +1,21 @@
+<apex:page controller="WSelectclass">
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageBlockTable value="{!wc}" var="w">
+             <apex:column headervalue="Select"> 
+                 <apex:inputCheckbox value="{!w.checkbox}"/>
+                </apex:column>
+                <apex:column headervalue="SlNo"> 
+                 <apex:outputText value="{!w.slno}"/>
+                </apex:column>
+                <apex:column value="{!w.cl.Name}" headervalue="ClassName"/>
+                <apex:column value="{!w.cl.Max_Deskcost__c}" headervalue="MaxDeskCost"/> 
+                <apex:column value="{!w.cl.Min_Deskcost__c}" headervalue="MinDeskCost"/>
+                <apex:column value="{!w.cl.Avg_Deskcost__c}" headervalue="AvgDeskCost"/> 
+         </apex:pageBlockTable>
+          <apex:pageBlockButtons >
+                <apex:commandButton value="Select" action="{!Redirectselect}"/>
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

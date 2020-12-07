@@ -1,0 +1,31 @@
+<aura:component controller="Campaignlistcontroller" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name ="PaginationList" type = "Campaign[]" />	
+      <aura:attribute name ="CampaignList" type = "Campaign[]" />	
+      <aura:attribute name ="PageSize" type = "Integer" default ="10" />
+    <aura:attribute name ="totalSize" type = "Integer"  />
+    <aura:attribute name ="Start" type = "Integer"  />
+    <aura:attribute name ="End" type = "Integer"  />
+<table>
+    <tr>  
+        <td style= "Width :5%"> Display Number of Campaigns </td>
+        <td style= "Width :10%">
+            <ui:inputSelect aura:id="records" change ="{!c.onSelectChange}"/>
+            <ui:inputSelectOption text="10" value="10"/>
+            <ui:inputSelectOption text="20" value="20"/>
+        </td>
+    </tr>
+</table>
+    <table class="slds-table slds-table–bordered">
+     <thead>
+     <tr style="background-color:#6cbcd2;color:white;font-weight:bold">
+         <th> Name  </th>
+         <th> Status  </th>
+         <th> # of Campaign Members Assigned  </th>
+         <th> EndDate  </th>
+     </tr>
+     </thead> 
+     <tbody>
+        
+     </tbody>
+    </table>
+    </aura:component>

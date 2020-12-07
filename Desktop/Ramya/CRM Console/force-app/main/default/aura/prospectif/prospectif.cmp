@@ -1,0 +1,120 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	<aura:attribute name="newpros" type = "Account" default="{ 'sobjectType': 'Account','Ramyaraghu03__off__c' :'','Ramyaraghu03__fa1__c':'','Name':'','Phone':'','Ramyaraghu03__Email__c':'','Ramyaraghu03__TIN__c':'','Ramyaraghu03__Address_Line_1__c':'','Ramyaraghu03__Address_Line_2__c':'','Ramyaraghu03__State__c':'','Ramyaraghu03__Country__c':'',RecordTypeId :'0120K000000pmRsQAI'
+                        }"/>
+     <aura:attribute name="newprose" type = "Account" default="{ 'sobjectType': 'Account','Ramyaraghu03__off__c' :'','Ramyaraghu03__fa1__c':'','Name':'','Phone':'','Ramyaraghu03__Email__c':'','Ramyaraghu03__TIN__c':'','Ramyaraghu03__Address_Line_1__c':'','Ramyaraghu03__Address_Line_2__c':'','Ramyaraghu03__State__c':'','Ramyaraghu03__Country__c':'',RecordTypeId :'0120K000000pmRsQAI'
+                        }"/>
+
+ 
+      <aura:attribute name="ctype" type="List" default="[
+                                                       {'label': 'Person', 'value': 'Person'},
+                                                       {'label': 'Entity', 'value': 'Entity'}
+                                                     ]" />
+       <aura:attribute name="selectedctype" type="boolean" default="false" />
+    
+    <aura:if isTrue ="{!v.selectedctype}">
+  <lightning:card title ="Create Person Prospect">
+      <div class="slds-grid slds-gutters">
+  <div class="slds-col slds-size_1-of-2">
+      <span>
+           <section>
+               <b> FA /Office Section </b>
+               
+               <lightning:input aura:id="fieldstovalidate" label="Office" type= "number" minLength="3" maxlength="3" pattern="[0-9]{3}" value="{!v.newpros.Ramyaraghu03__Office__c}" required="true" />
+              
+              <lightning:input aura:id="fieldstovalidate" label="FA" type= "number"  value="{!v.newpros.Ramyaraghu03__FA__c}" required="true" />
+           <lightning:radioGroup name="myctype" 
+                          label="Contact Type"
+                          options="{!v.ctype}"
+                          value="{! v.selectedctype }"
+                          type="radio" required ="true"  onchange ="{!c.onGroup}"
+                          />
+          
+           <b>Profile Information</b>
+               
+               <lightning:input aura:id="fieldstovalidate" label="Name"  required="true" messageWhenValueMissing ="Please enter Name" value="{!v.newpros.Name}"/>
+               <lightning:input aura:id="fieldstovalidate" label="Phone" type= "number"  required="true" messageWhenValueMissing ="Please enter atleast 10 numbers for Phone" value="{!v.newpros.Phone}"/>
+               <lightning:input aura:id="fieldstovalidate" label="Email"  required="true" messageWhenValueMissing ="Please enter a complete Email address" value="{!v.newpros.Ramyaraghu03__Email__c}"/>
+               <lightning:input aura:id="fieldstovalidate" label="TIN"  type= "number" required="true" messageWhenValueMissing ="Please enter 9 digit TIN value" value="{!v.newpros.Ramyaraghu03__TIN__c}"/>
+               <lightning:input aura:id="fieldstovalidate" label="Address Line 1"   value="{!v.newpros.Ramyaraghu03__Address_Line_1__c}"/>
+               <lightning:input aura:id="fieldstovalidate" label="Address Line 2"   value="{!v.newpros.Ramyaraghu03__Address_Line_2__c}"/>
+               <lightning:input aura:id="fieldstovalidate" label="State"   value="{!v.newpros.Ramyaraghu03__State__c}"/>
+               <lightning:input aura:id="fieldstovalidate" label="Country"   value="{!v.newpros.Ramyaraghu03__Country__c}"/>
+            
+           </section>
+       </span>
+            <lightning:button label="Save" 
+                              class="slds-m-top--medium"
+                              variant="brand"
+                              onclick="{!c.saveprospect}"/>
+              <lightning:button label="Cancel" 
+                              class="slds-m-top--medium"
+                              variant ="destructive"
+                              onclick="{!c.Cancel}"/>
+      
+          </div>
+             
+        </div>
+  </lightning:card>
+       <aura:set attribute="else">
+      <!-- content renders if false -->
+           <div class="slds-grid slds-gutters">
+  <div class="slds-col slds-size_1-of-2">
+      <span>
+           <lightning:card title ="Create Entity Prospect">
+               <section>
+               <b> FA /Office Section </b>
+               <lightning:input aura:id="fieldstovalidate" label="Office" type= "number" minLength="3" maxlength="3" pattern="[0-9]{3}" value="{!v.newprose.Ramyaraghu03__Office__c}" required="true" />
+              
+              <lightning:input aura:id="fieldstovalidate" label="FA" type= "number"  value="{!v.newprose.Ramyaraghu03__FA__c}" required="true" />
+         
+                   <b>Entity Type</b> <br></br><force:inputField value="{!v.newprose.Type}" required="true"/>
+
+<fieldset class="slds-form-element">
+    <lightning:radioGroup name="myctype" 
+                          label="Contact Type"
+                          options="{!v.ctype}"
+                          value="{! v.selectedctype }"
+                          type="radio" required ="true"  onchange ="{!c.onGroup}"
+                          />
+  
+ 
+</fieldset>
+           </section>
+          
+           </lightning:card>
+      </span>
+               </div>
+               <div class="slds-col slds-size_1-of-2">
+      <span>
+      
+           <section>
+               
+          
+           <b>Profile Information</b>
+               
+               <lightning:input aura:id="fieldstovalidate" label="Name"  required="true" messageWhenValueMissing ="Please enter Name" value="{!v.newprose.Name}"/>
+               <lightning:input aura:id="fieldstovalidate" label="Phone" type= "number"  required="true" messageWhenValueMissing ="Please enter atleast 10 numbers for Phone" value="{!v.newprose.Phone}"/>
+               <lightning:input aura:id="fieldstovalidate" label="Email"  required="true" messageWhenValueMissing ="Please enter a complete Email address" value="{!v.newprose.Ramyaraghu03__Email__c}"/>
+               <lightning:input aura:id="fieldstovalidate" label="TIN"  type= "number" required="true" messageWhenValueMissing ="Please enter 9 digit TIN value" value="{!v.newprose.Ramyaraghu03__TIN__c}"/>
+               <lightning:input aura:id="fieldstovalidate" label="Address Line 1"   value="{!v.newprose.Ramyaraghu03__Address_Line_1__c}"/>
+               <lightning:input aura:id="fieldstovalidate" label="Address Line 2"   value="{!v.newprose.Ramyaraghu03__Address_Line_2__c}"/>
+               <lightning:input aura:id="fieldstovalidate" label="State"   value="{!v.newprose.Ramyaraghu03__State__c}"/>
+               <lightning:input aura:id="fieldstovalidate" label="Country"   value="{!v.newprose.Ramyaraghu03__Country__c}"/>
+            
+           </section>
+       </span>
+            <lightning:button label="Save" 
+                              class="slds-m-top--medium"
+                              variant="brand"
+                              onclick="{!c.saveEprospect}"/>
+              <lightning:button label="Cancel" 
+                              class="slds-m-top--medium"
+                              variant ="destructive"
+                              onclick="{!c.Cancel}"/>
+      
+          </div>
+           </div>
+      </aura:set> 
+        
+        </aura:if>
+</aura:component>

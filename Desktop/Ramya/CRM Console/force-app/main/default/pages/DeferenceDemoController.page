@@ -1,0 +1,29 @@
+<apex:page controller="DeferenceDemoController">
+  <apex:form >
+    <apex:commandButton value="Show records using SOSL" action="{!soslDemo_method}"/>
+    <apex:pageBlock title="Accounts">
+       <apex:pageblockTable value="{!accList }" var="acc">
+          <apex:column value="{!acc.name}"/>
+          <apex:column value="{!acc.Type}"/>
+       </apex:pageblockTable>
+    </apex:pageBlock>
+ <apex:pageBlock title="Contacts">
+    <apex:pageblockTable value="{!conList}" var="con">
+      <apex:column value="{!con.name}"/>
+      <apex:column value="{!con.email}"/>
+ </apex:pageblockTable>
+ </apex:pageBlock>
+ <apex:pageBlock title="Leads">
+    <apex:pageblockTable value="{!leaList}" var="lea">
+      <apex:column value="{!lea.name}"/>
+      <apex:column value="{!lea.company}"/>
+    </apex:pageblockTable>
+ </apex:pageBlock>
+ <apex:pageBlock title="Opportunities">
+    <apex:pageblockTable value="{!optyList}" var="opty">
+      <apex:column value="{!opty.name}"/>
+     <apex:column value="{!opty.StageName}"/>
+ </apex:pageblockTable>
+ </apex:pageBlock>
+  </apex:form>
+</apex:page>

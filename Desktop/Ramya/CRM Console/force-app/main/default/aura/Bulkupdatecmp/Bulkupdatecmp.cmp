@@ -1,0 +1,16 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+<lightning:tabset variant="scoped">
+        <lightning:tab label="PCFA Bulk Update">
+            One Content !
+            
+            <div class ="slds-grid">
+            <div class = "slds-col slds-size_2-of-8">
+                          
+            </div>
+            </div>
+        </lightning:tab>
+        <lightning:tab label="Team Bulk Update">
+            Two Content !
+        </lightning:tab>
+    </lightning:tabset>
+</aura:component>

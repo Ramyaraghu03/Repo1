@@ -1,0 +1,25 @@
+<apex:page standardController="Account" recordSetVar="accounts"
+tabstyle="account" extensions="Accountdisplay" action="{!editacct}">
+<apex:form >
+<apex:pageBlock Title="You have selected following accounts" mode="edit">
+<apex:PageBlock >
+<apex:pageBlockTable value="{!accounts}" var="a">
+<apex:column value="{!a.name}">
+</apex:column>
+</apex:PageBlockTable>
+</apex:PageBlock>
+<apex:pageBlock title="Edit Selected Accounts">
+
+            <apex:pageBlockButtons >
+                <apex:commandButton action="{!Edit}" value="Edit"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockTable value="{!selected}" var="acctse">
+                <apex:inputField value="{!account.name}"/>
+<apex:inputField value="{!account.site}"/>
+<apex:inputField value="{!account.type}"/>
+<apex:inputField value="{!account.accountNumber}"/>
+                </apex:pageBlockTable> 
+       </apex:pageBlock>
+</apex:PageBlock>
+</apex:form>
+</apex:page>

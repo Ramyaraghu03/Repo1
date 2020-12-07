@@ -1,0 +1,16 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	 <aura:attribute name="logacallurl" type="String"/>
+    <aura:attribute name ="recordId" type ="String"/>
+    <lightning:navigation aura:id="navLink"/>
+	<lightning:buttonGroup>
+        
+		<lightning:button variant="neutral" label="Log a Call" onclick="{! c.handlelogacall }" />
+		<lightning:button variant="neutral" label="New Task" />
+		<lightning:button variant="neutral" label="New Event" />
+		<lightning:buttonMenu alternativeText="Show menu" class="slds-button_last">
+			<lightning:menuItem label="New Recurring Task" value="item1" />
+			<lightning:menuItem label="New Task Series" value="item2" />
+			<lightning:menuItem label="New Client Contact Note" value="item3" />
+		</lightning:buttonMenu>
+	</lightning:buttonGroup>
+</aura:component>

@@ -1,0 +1,10 @@
+<apex:page controller="UndeleteRecsController">
+ <apex:form >
+  <apex:pageBlock >
+  <apex:commandButton value="Undelete" action="{!UndeleteRecs}" reRender="pgblck"/>
+  </apex:pageBlock>
+  <apex:pageBlock id="pgblck">
+   {!accList}
+   </apex:pageBlock>
+ </apex:form>
+</apex:page>

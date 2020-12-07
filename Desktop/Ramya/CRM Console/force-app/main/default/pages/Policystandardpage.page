@@ -1,0 +1,17 @@
+<apex:page standardController="Policy__c" >
+    <apex:form >
+        <apex:pageBlock title="Policy  Creation">
+            <apex:pageBlockButtons >
+            <apex:commandButton action="{!Save}" value="Save"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection title="Enter Policy Details" >
+                <apex:inputField value="{!Policy__c.Address__c}"/>
+                <apex:inputField value="{!Policy__c.Broker__c}"/>
+                <apex:inputField value="{!Policy__c.Opportunity__c}"/>
+                <apex:inputField value="{!Policy__c.Country__c}"/>
+               
+            </apex:pageBlockSection>
+
+        </apex:pageBlock>
+</apex:form>
+</apex:page>

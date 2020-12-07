@@ -1,0 +1,52 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	
+  <!--use boolean attribute for Store true/false value,
+    make default to "false" so modal box are not display on the load of component. 
+    --> 
+  <aura:attribute name="isOpen" type="boolean" default="false"/>
+ 
+  <!--Use "slds-m-around- -xx-large" class to add standard Large padding to the component--> 
+  <div class="slds-m-around--xx-large">
+    <button class="slds-button slds-button--brand" onclick="{!c.openModel}">About Financial Accounts </button>  
+    
+  <!--Use aura:if tag to display Model Box, on the bese of conditions. [isOpen boolean attribute] -->   
+    <aura:if isTrue="{!v.isOpen}">
+      
+   <!--###### MODAL BOX Start From Here ######--> 
+      <div role="dialog" tabindex="-1" aria-labelledby="header99" class="slds-modal slds-fade-in-open ">
+        <div class="slds-modal__container">
+          <!-- ###### MODAL BOX HEADER Part Start From Here ######-->
+          <div class="slds-modal__header">
+            <button class="slds-button slds-modal__close slds-button--icon-inverse" title="Close" onclick="{!c.closeModel}">
+            X
+            <span class="slds-assistive-text">Close</span>
+            </button>
+            <h2 id="header99" class="slds-text-heading--medium">About Financial Accounts</h2>
+          </div>
+          <!--###### MODAL BOX BODY Part Start From Here ######-->
+           <div class="slds-modal__content slds-p-around--medium">
+            <p><b>Financial Account Types : Trust Account,IRA Account, Joint Account,Household Account
+                <p> <b>HouseHold Account : </b> This account is used for creating household proerty accounts.</p>
+                    
+                
+             
+              </b>
+            </p>
+          </div>
+                
+              
+
+        
+          <!--###### MODAL BOX FOOTER Part Start From Here ######-->
+          <div class="slds-modal__footer">
+            <button class="slds-button slds-button--neutral" onclick="{!c.closeModel}" >Cancel</button>
+            <button class="slds-button slds-button--brand" onclick="{!c.likenClose}">Like and Close</button>
+          </div>
+        </div>
+      </div>
+      <div class="slds-backdrop slds-backdrop--open"></div>
+      <!--###### MODAL BOX Part END Here ######-->
+    
+ </aura:if>
+  </div>
+</aura:component>

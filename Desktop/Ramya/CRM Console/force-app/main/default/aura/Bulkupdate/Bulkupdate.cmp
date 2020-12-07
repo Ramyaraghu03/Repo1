@@ -1,0 +1,48 @@
+<aura:component controller ="bulkoppupdate" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="Opplist" type="Opportunity[]"/>
+    <aura:attribute name="columns" type="List"/>
+    <aura:attribute name="selectedRowsCount" type="Integer" default="0"/>
+    <aura:attribute name="maxRowSelection" type="Integer" default="40"/>
+    <aura:attribute name="selectedRows" type="List" />
+
+    <!-- handlers-->
+    <aura:handler name="init" value="{! this }" action="{!c.init }"/> 
+    <lightning:tabset variant="scoped">
+        <lightning:tab label="Bulk Update PCFA">
+            <div class="slds-grid slds-p-vertical_medium">
+               
+                <div class="slds-col slds-size_2-of-8 slds-p-right_x-small">
+                   <lightning:select name="select1" label="How many tickets?" required="true">
+                    <option value="">choose one...</option>
+                    <option value="1">one</option>
+                    <option value="2">two</option>
+                    <option value="3">three</option>
+                   </lightning:select>
+               </div>
+                <div class="slds-col slds-size_1-of-8 slds-p-horizontal_x-small btn-md" >
+                    <div class="slds-input-has-icon slds-input-has-icon--left">
+                    <lightning:button variant="neutral" label="Save" title="Save"  ></lightning:button>
+                        <lightning:button variant="brand" label="Cancel" title="Cancel"  ></lightning:button>
+                    </div>
+               </div> 
+                </div>
+       <div style="height: 300px">
+        <h1>SelectedRows: {!v.selectedRowsCount }</h1>
+        
+        <lightning:datatable
+            columns="{! v.columns }"
+            data="{! v.Opplist }"
+            keyField="id"
+            maxRowSelection="{! v.maxRowSelection }"
+                             onrowaction="{! c.handleRowAction }"
+                             selectedRows="{! v.selectedRows }"
+                             onrowselection="{!c.updateSelectedText }"/>
+    </div>
+            
+        </lightning:tab>
+        <lightning:tab label="Team Bulk Update">
+            Two Content !
+        </lightning:tab>
+       
+    </lightning:tabset>
+</aura:component>

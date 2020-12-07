@@ -1,0 +1,27 @@
+<apex:page id="thePage">
+    <!-- A simple function for changing the font. -->
+    <script>
+        function changeFont(input, textid) {
+            if(input.checked) {
+                document.getElementById(textid).style.fontWeight = "bold";
+            }
+            else {
+                document.getElementById(textid).style.fontWeight = "normal";
+            }
+        }
+    </script>
+
+    <!-- This outputPanel calls the function, passing in the
+         checkbox itself, and the DOM ID of the target component. -->
+    <apex:outputPanel >
+        <label >Click this box to change text font:</label>
+        <input id="checkbox" type="checkbox"
+            onclick="changeFont(this,'{!$Component.thePanel}');"/>
+    </apex:outputPanel>
+
+    <!-- This outputPanel is the target, and contains 
+         text that will be changed. -->
+    <apex:outputPanel id="thePanel">
+        Change my font weight!
+    </apex:outputPanel>
+</apex:page>

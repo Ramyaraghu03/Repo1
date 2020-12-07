@@ -1,0 +1,20 @@
+<apex:page controller="SOQLPaginationController1">
+    <apex:form >
+        <apex:pageBlock title="Pagination with SOQL Query" id="pgBlock">
+            <apex:pageBlockTable value="{!Accounts}" var="acc" id="pgTable">
+                <apex:column value="{!acc.Name}"/>
+                <apex:column value="{!acc.Industry}"/>
+                <apex:column value="{!acc.BillingState}"/>
+                <apex:column value="{!acc.Phone}"/>
+            </apex:pageBlockTable>
+          
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Previous" action="{!Previous}" rerender="pgBlock"
+                                    status="status" disabled="{!DisablePrevious}" />
+                <apex:commandButton value="Next" action="{!Next}" reRender="pgBlock"
+                                    status="status" disabled="{!DisableNext}" />
+                <apex:actionStatus id="status" startText="Loading..."/>
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

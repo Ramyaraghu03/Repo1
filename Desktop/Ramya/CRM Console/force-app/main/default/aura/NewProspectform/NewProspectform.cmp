@@ -1,0 +1,59 @@
+<aura:component controller="CreateProspectcontroller" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    
+     
+        <aura:attribute name="newpros" type = "Account" default="{ 'sobjectType': 'Account','Ramyaraghu03__off__c' :'','Ramyaraghu03__fa1__c':'','Name':'','Phone':'','Ramyaraghu03__Email__c':'','Ramyaraghu03__TIN__c':'','Ramyaraghu03__Address_Line_1__c':'','Ramyaraghu03__Address_Line_2__c':'','Ramyaraghu03__State__c':'','Ramyaraghu03__Country__c':'',RecordTypeId :'0120K000000pmRsQAI'
+                        }"/>
+ 
+    <aura:attribute name= "res" type ="string"/>
+    <aura:attribute name="isOpen" type="boolean" default="true"/>
+    <aura:if isTrue="{!v.isOpen}">
+    <div class="demo-only" style="height: 640px;">
+  <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_large">
+     <div class="slds-modal__container">
+       <header class="slds-modal__header">
+      <lightning:buttonIcon iconName="utility:close"
+                                              onclick="{! c.closeModel }"
+                                              alternativeText="close"
+                                              variant="bare-inverse"
+                                              class="slds-modal__close"/>
+          <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Create Person Prospect</h2>
+       </header>
+       
+           
+       <div class="slds-modal__content slds-p-around--medium">
+           <section>
+               <b> FA /Office Section </b>
+               <b>Office</b>
+               <lightning:input aura:id="fieldstovalidate" label="Office" type= "number" minLength="3" maxlength="3" pattern="[0-9]{3}" value="{!v.newpros.Ramyaraghu03__Office__c}" required="true" />
+              <b>FA</b>
+              <lightning:input aura:id="fieldstovalidate" label="FA" type= "number"  value="{!v.newpros.Ramyaraghu03__FA__c}" required="true" />
+           </section>
+           <section>
+           <b>Profile Information</b>
+               
+               <lightning:input aura:id="fieldstovalidate" label="Name"  required="true" messageWhenValueMissing ="Please enter Name" value="{!v.newpros.Name}"/>
+               <lightning:input aura:id="fieldstovalidate" label="Phone" type= "number"  required="true" messageWhenValueMissing ="Please enter atleast 10 numbers for Phone" value="{!v.newpros.Phone}"/>
+               <lightning:input aura:id="fieldstovalidate" label="Email"  required="true" messageWhenValueMissing ="Please enter a complete Email address" value="{!v.newpros.Ramyaraghu03__Email__c}"/>
+               <lightning:input aura:id="fieldstovalidate" label="TIN"  type= "number" required="true" messageWhenValueMissing ="Please enter 9 digit TIN value" value="{!v.newpros.Ramyaraghu03__TIN__c}"/>
+               <lightning:input aura:id="fieldstovalidate" label="Address Line 1"   value="{!v.newpros.Ramyaraghu03__Address_Line_1__c}"/>
+               <lightning:input aura:id="fieldstovalidate" label="Address Line 2"   value="{!v.newpros.Ramyaraghu03__Address_Line_2__c}"/>
+               <lightning:input aura:id="fieldstovalidate" label="State"   value="{!v.newpros.Ramyaraghu03__State__c}"/>
+               <lightning:input aura:id="fieldstovalidate" label="Country"   value="{!v.newpros.Ramyaraghu03__Country__c}"/>
+   
+           </section>
+    
+            <lightning:button label="Save" 
+                              class="slds-m-top--medium"
+                              variant="brand"
+                              onclick="{!c.saveprospect}"/>
+     
+             
+        </div>
+           
+      </div>
+    </section>
+     
+          
+   </div>
+    </aura:if>
+</aura:component>

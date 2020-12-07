@@ -1,0 +1,12 @@
+<apex:component controller="myComponentController">
+  <apex:attribute name="componentValue" description="Attribute on the component."
+                  type="String" required="required" assignTo="{!controllerValue}"/>
+    <apex:pageBlock title="My Custom Component">
+      <p>
+        <code>componentValue</code> is "{!componentValue}"
+        <br/>
+        <code>controllerValue</code> is "{!controllerValue}"
+      </p>
+    </apex:pageBlock>
+    Notice that the controllerValue has been upper cased using an Apex method.
+</apex:component>

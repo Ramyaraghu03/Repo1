@@ -1,0 +1,16 @@
+<apex:page controller="wizard_class" >
+ <apex:form >
+        <apex:pageBlock title="Enter Contract Details">
+        <apex:pageBlockButtons >
+             <apex:commandButton value="SaveContract" action="{!savecontract}"/>
+            <apex:commandButton value="Next" action="{!gotopage3}"/>
+        </apex:pageBlockButtons>
+            <apex:pageBlockSection >
+                <apex:inputField value="{!c.AccountId}"/>
+               
+                <apex:inputField value="{!c.StartDate}"/>
+                <apex:inputField value="{!c.ContractTerm}"/>
+            </apex:pageBlockSection>
+            </apex:pageBlock>
+    </apex:form>
+</apex:page>

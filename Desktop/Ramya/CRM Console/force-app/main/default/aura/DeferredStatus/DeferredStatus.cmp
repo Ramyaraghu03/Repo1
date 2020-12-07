@@ -1,0 +1,15 @@
+<aura:component controller="FetchDeferredReason"  implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+ <aura:attribute name="acc" type ="Account" default="{'sobjectType':'Account', 'Ramyaraghu03__Defer_Engagement_Reason__c':''}" /> 
+ <aura:attribute name ="EngagementReason" default="Ramyaraghu03__Defer_Engagement_Reason__c" type="String"  access="global"/>
+    <aura:attribute name ="DeferredDate" default="Ramyaraghu03__Deferred_Date__c" type="String"  access="global"/>
+ <aura:handler name="init" value="{!this}" action="{!c.doInit}" />  
+    <aura:handler name="DeferEvt" event="c:DeferredStatusEvent" action="{!c.doInit}"></aura:handler> <!-- Handler for custom event -->
+ <aura:if isTrue = "{!not(empty(v.EngagementReason))}">
+<div class ="mycolor">
+  <div class="slds-box slds-theme_warning">
+  <p>
+    <strong> Deferred Engagement - {!v.DeferredDate}  </strong> </p>
+</div>  
+ </div>
+   </aura:if>     
+</aura:component>

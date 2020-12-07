@@ -1,0 +1,85 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+<div style="height: 15rem;">
+<div class="slds-form-element">
+<label class="slds-form-element__label" for="combobox-id-4">Topics</label>
+<div class="slds-form-element__control">
+<div class="slds-combobox_container">
+<div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open" aria-expanded="true" aria-haspopup="listbox" role="combobox">
+<div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
+<input type="text" class="slds-input slds-combobox__input slds-has-focus slds-combobox__input-value" id="combobox-id-4" aria-activedescendant="option1" aria-autocomplete="list" aria-controls="listbox-id-4" autocomplete="off" role="textbox" placeholder="Search..."
+value="salesforce" />
+<span class="slds-icon_container slds-icon-utility-search slds-input__icon slds-input__icon_right">
+
+</span>
+</div>
+<div id="listbox-id-4" class="slds-dropdown slds-dropdown_length-with-icon-7 slds-dropdown_fluid" role="listbox">
+<ul class="slds-listbox slds-listbox_vertical" role="presentation">
+<li role="presentation" class="slds-listbox__item">
+<div aria-selected="true" id="option0" class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_term slds-has-focus" role="option">
+<span class="slds-media__figure">
+<span class="slds-icon_container slds-icon-utility-search" title="Search for term: ">
+
+<span class="slds-assistive-text">Type a Topic: </span>
+</span>
+</span>
+<span class="slds-media__body">
+<span class="slds-listbox__option-text slds-listbox__option-text_entity">salesforce</span>
+</span>
+</div>
+</li>
+<li role="presentation" class="slds-listbox__item">
+<div id="option1" class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta" role="option">
+<span class="slds-media__figure">
+<span class="slds-icon_container slds-icon-standard-account">
+
+</span>
+</span>
+<span class="slds-media__body">
+<span class="slds-listbox__option-text slds-listbox__option-text_entity">
+<span>
+<mark>Salesforce</mark>.com</span>
+</span>
+<span class="slds-listbox__option-meta slds-listbox__option-meta_entity">Account • San Francisco, CA</span>
+</span>
+</div>
+</li>
+<li role="presentation" class="slds-listbox__item">
+<div id="option2" class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta" role="option">
+<span class="slds-media__figure">
+<span class="slds-icon_container slds-icon-standard-account">
+
+</span>
+</span>
+<span class="slds-media__body">
+<span class="slds-listbox__option-text slds-listbox__option-text_entity">
+<span>
+<mark>Salesforce</mark>.org</span>
+</span>
+<span class="slds-listbox__option-meta slds-listbox__option-meta_entity">Account • New York, NY</span>
+</span>
+</div>
+</li>
+<li role="presentation" class="slds-listbox__item">
+<div id="option3" class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta" role="option">
+<span class="slds-media__figure">
+<span class="slds-icon_container slds-icon-standard-account">
+  
+</span>
+</span>
+<span class="slds-media__body">
+<span class="slds-listbox__option-text slds-listbox__option-text_entity">
+<span>
+<mark>Salesforce</mark>HQ</span>
+</span>
+<span class="slds-listbox__option-meta slds-listbox__option-meta_entity">Account • San Francisco, CA</span>
+</span>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>  
+</aura:component>

@@ -1,0 +1,18 @@
+<aura:component controller = "ImportCampaignmemberctrl" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+<aura:attribute name ="MSVATeamlist" type="MSVA_Team__c[]" />  
+    <aura:handler name = "init"  value="{!this}" action = "{!c.doInit}" />
+    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+        
+    <label class="slds-form-element__label" style="margin-right: 0.5rem;">Please select a csv file to upload </label>
+        <lightning:helptext content="Please upload your csv file" class="customIcon"/> 
+        <lightning:input name="file1" type="file"  multiple="false" accept=".csv" />
+        <div class="slds-align_absolute-center" style="height:10rem">
+            <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate"><b>Please select Campaign Member owners selection </b> </h2>
+        <aura:iteration items="{!v.MSVATeamlist}" var="item">
+            <p>{!item.Name}</p>
+            </aura:iteration>
+        
+        
+        </div>
+    </div>
+</aura:component>

@@ -1,0 +1,10 @@
+<apex:page controller="Policycreationcontroller" >
+    <apex:pageBlock >
+   <apex:pageBlockTable value="{!policies}" var="p">
+            <apex:column value="{!p.Address__c}"/>
+            <apex:column value="{!p.Broker__c}"/>
+            <apex:column value="{!p.Country__c}"/>
+            <apex:column value="{!p.Opportunity__c}"/>
+   </apex:pageBlockTable>
+        </apex:pageBlock>
+</apex:page>

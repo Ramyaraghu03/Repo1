@@ -1,0 +1,14 @@
+<apex:page standardController="Case" extensions="CasesControllerselect" recordSetVar="cases" action="{!bumpCases}">
+   <apex:form >
+       <apex:pageBlock title="Bump Selected Cases">
+            <apex:pageBlockButtons >
+                <apex:commandButton action="{!updateCases}" value="Confirm"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockTable value="{!selected}" var="case">
+                <apex:column value="{!case.casenumber}"/>
+                <apex:column value="{!case.subject}"/>
+                <apex:column value="{!case.priority}"/> 
+            </apex:pageBlockTable> 
+        </apex:pageBlock>
+    </apex:form>    
+</apex:page>

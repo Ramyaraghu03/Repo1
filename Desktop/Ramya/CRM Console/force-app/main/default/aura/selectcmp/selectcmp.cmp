@@ -1,0 +1,7 @@
+<aura:component >
+    <lightning:select name="selectItem" label="Select an item" onchange="{!c.doSomething}">
+        <option value="">choose one...</option>
+        <option value="1">one</option>
+        <option value="2">two</option>
+    </lightning:select>
+</aura:component>

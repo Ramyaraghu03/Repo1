@@ -1,0 +1,10 @@
+<aura:component >
+    <aura:attribute name = "TotalIncome" type = "Decimal" />
+    <aura:handler name= "TotalIncomeEvt" event = "c:TotalIncomeEvent" action = "{!c.CalcTotalIncomehandlerparent}" />
+    <c:IncomeCalculateComp1/>
+    <div class="parent">
+    <span class="slds-badge">Total Income : {!v.TotalIncome} </span>
+    
+    
+    </div>
+</aura:component>

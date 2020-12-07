@@ -1,0 +1,48 @@
+<aura:component controller ="PaginationCamplist" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+<aura:attribute name="Campaignlist" type="Campaign[]" />
+   <aura:attribute name="Camp" type="String" /> 
+    <aura:attribute name ="offset" type ="Integer"  />
+    <aura:attribute name ="hasnext" type ="boolean" />
+    <aura:attribute name ="hasprev" type ="boolean"/>    
+    <aura:handler name ="init" action = "{!c.doinit}"  value = "{!this}"/>
+    <div class="wk_static">
+    <div class="slds-page-header">
+    <div class="slds-media__body">
+                            <h1 class="slds-page-header__title slds-m-right--small slds-truncate slds-align-middle" title="Campaigns">My Call Campaigns</h1>
+                        </div>
+    
+    </div>
+     <table class="slds-table slds-table–bordered">
+     <thead>
+     <tr style="background-color:#6cbcd2;color:white;font-weight:bold">
+         <th> Name  </th>
+         <th> Status  </th>
+         <th> #CampaignMembers </th>
+         <th> EndDate  </th>
+     </tr>
+     </thead> 
+     <tbody>
+         <aura:iteration items="{!v.Campaignlist}" var="camp">
+                    <tr class="slds-hint-parent">                        
+                        <td data-label="Campaign Name" >
+                            <span>
+                            <a href="{!'../../' + camp.Id}" aura:id="{!v.camp.Id}" onclick = "{!c.navigateToCamp}" >{!camp.Name}</a>
+                             
+                                </span>
+                        </td>
+                        <td data-label="Status" >{!camp.Status}</td>
+                        <td data-label="# CampaignMembers" >{!camp.Ramyaraghu03__No_of_CampaignMembers__c}</td>
+                        <td data-label="EndDate">{!camp.EndDate }</td>
+                    </tr>
+         </aura:iteration>
+     </tbody>
+      </table>  
+  
+                           
+                    <lightning:button disabled="{!v.hasprev}" iconName="utility:chevronleft" variant="brand" aura:id="prevPage" onclick="{!c.Previous}" />            
+                    <lightning:button disabled="{!v.hasnext}"   variant="brand" iconName="utility:chevronright" onclick="{!c.Next}"/>
+                
+
+    </div>
+        
+</aura:component>

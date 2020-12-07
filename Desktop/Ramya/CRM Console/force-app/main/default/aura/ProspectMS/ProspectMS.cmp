@@ -1,0 +1,82 @@
+<aura:component controller="CreateProspectcontroller" implements="force:appHostable,flexipage:availableForAllPageTypes,lightning:actionOverride,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	 <aura:attribute name="newpros" type = "Account" default="{ 'sobjectType': 'Account','Ramyaraghu03__off__c' :'','Ramyaraghu03__fa1__c':'','Name':'','Phone':'','Ramyaraghu03__Email__c':'','Ramyaraghu03__TIN__c':'','Ramyaraghu03__Address_Line_1__c':'','Ramyaraghu03__Address_Line_2__c':'','Ramyaraghu03__State__c':'','Ramyaraghu03__Country__c':'',RecordTypeId :'0120K000000pmRsQAI'
+                        }"/>
+   <aura:attribute name="ctype" type="List" default="[
+                                                       {'label': 'Person', 'value': 'Person'},
+                                                       {'label': 'Entity', 'value': 'Entity'}
+                                                     ]" />
+       <aura:attribute name="selectedctype" type="String" />
+    <aura:attribute name= "res" type ="string"/>
+  <lightning:card title ="Create Prospect">
+    <div class="demo-only" style="height: 640px;">
+
+           
+       <div class="slds-grid slds-gutters">
+  <div class="slds-col slds-size_1-of-3">
+   <span>
+ 
+           <section>
+               <b> FA /Office Section </b>
+               <b>Office</b>
+               <lightning:input aura:id="fieldstovalidate" label="Office" type= "number" minLength="3" maxlength="3" pattern="[0-9]{3}" value="{!v.newpros.Ramyaraghu03__Office__c}" required="true" />
+              <b>FA</b>
+              <lightning:input aura:id="fieldstovalidate" label="FA" type= "number"  value="{!v.newpros.Ramyaraghu03__FA__c}" required="true" />
+           <b>Entity Type</b> <br></br><force:inputField value="{!v.newprose.Type}" required="true"/>
+             
+                 <div class="slds-modal__content slds-p-around--medium">
+                     <lightning:radioGroup name="myctype" 
+                          label="Contact Type"
+                          options="{! v.ctype }"
+                          value="{! v.selectedctype }"
+                          type="radio" required ="true" 
+                          />
+ 
+                </div>
+            </section>
+       
+
+  </span>
+  </div>      
+               <div class="slds-col slds-size_1-of-3">
+                <span>
+          
+           
+           <section>
+           <b>Profile Information</b>
+               
+               <lightning:input aura:id="fieldstovalidate" label="Name"  required="true" messageWhenValueMissing ="Please enter Name" value="{!v.newpros.Name}"/>
+               <lightning:input aura:id="fieldstovalidate" label="Phone" type= "number"  required="true" messageWhenValueMissing ="Please enter atleast 10 numbers for Phone" value="{!v.newpros.Phone}"/>
+               <lightning:input aura:id="fieldstovalidate" label="Email"  required="true" messageWhenValueMissing ="Please enter a complete Email address" value="{!v.newpros.Ramyaraghu03__Email__c}"/>
+               <lightning:input aura:id="fieldstovalidate" label="TIN"  type= "number" required="true" messageWhenValueMissing ="Please enter 9 digit TIN value" value="{!v.newpros.Ramyaraghu03__TIN__c}"/>
+               <lightning:input aura:id="fieldstovalidate" label="Address Line 1"   value="{!v.newpros.Ramyaraghu03__Address_Line_1__c}"/>
+               <lightning:input aura:id="fieldstovalidate" label="Address Line 2"   value="{!v.newpros.Ramyaraghu03__Address_Line_2__c}"/>
+               <lightning:input aura:id="fieldstovalidate" label="State"   value="{!v.newpros.Ramyaraghu03__State__c}"/>
+               <lightning:input aura:id="fieldstovalidate" label="Country"   value="{!v.newpros.Ramyaraghu03__Country__c}"/>
+   
+                    <footer class="slds-modal__footer">
+            <lightning:button label="Save" 
+                              class="slds-m-top--medium"
+                              variant="brand"
+                              onclick="{!c.saveprospect}"/>
+           <lightning:button label="Cancel" 
+                              class="slds-m-top--medium"
+                              variant ="destructive"
+                              onclick="{!c.Cancel}"/>
+                        
+       </footer>
+               
+           </section>
+    </span>
+  </div>    
+             
+        </div>
+          
+           
+      
+      </div>
+        
+    
+    </lightning:card>
+     
+     
+</aura:component>

@@ -1,0 +1,14 @@
+<aura:component >
+    <ltng:require styles="/resource/SLDS206/assets/styles/salesforce-lightning-design-system"/>
+    <div class ="slds">
+        <article class="slds-card">
+<div aura:id = "header" class="slds-card__header slds-grid">
+    <header class="slds-media slds-media_center slds-has-flexi-truncate">Alert Header </header>
+</div>
+<div class="slds-card__body"> Alert body</div>
+<footer class="slds-card__footer"></footer>
+</article>
+    
+    </div>
+	
+</aura:component>

@@ -1,0 +1,23 @@
+<aura:component controller ="bulkoppupdate" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	<aura:attribute name="Opplist" type="Opportunity[]"/>
+    <aura:attribute name="columns" type="List"/>
+    <aura:attribute name="selectedRowsCount" type="Integer" default="0"/>
+    <aura:attribute name="maxRowSelection" type="Integer" default="40"/>
+    <aura:attribute name="selectedRows" type="List" />
+
+    <!-- handlers-->
+    <aura:handler name="init" value="{! this }" action="{! c.init }"/>
+    
+    <div style="height: 300px">
+        <h1>SelectedRows: {!v.selectedRowsCount }</h1>
+        
+        <lightning:datatable
+            columns="{! v.columns }"
+            data="{! v.Opplist }"
+            keyField="id"
+            maxRowSelection="{! v.maxRowSelection }"
+                             onrowaction="{! c.handleRowAction }"
+                             selectedRows="{! v.selectedRows }"
+                             onrowselection="{!c.updateSelectedText }"/>
+    </div>
+</aura:component>

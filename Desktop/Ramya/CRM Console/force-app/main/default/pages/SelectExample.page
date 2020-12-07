@@ -1,0 +1,10 @@
+<apex:page controller="SelectExample">
+    <apex:form >
+        <apex:selectList size="1">
+        <apex:selectOption value="{!myoption}">
+<apex:actionSupport event="Onchange" rerender="one" />
+            </apex:selectOption>
+        </apex:selectList>
+        <apex:outputLabel id="one">You have selected {!myval}</apex:outputLabel>
+    </apex:form>
+ </apex:page>

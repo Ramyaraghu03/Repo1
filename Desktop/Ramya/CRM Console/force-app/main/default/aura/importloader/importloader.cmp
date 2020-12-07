@@ -1,0 +1,64 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" 
+                  controller="importfile"  access="global" >
+    <aura:attribute name="Office" type="Integer" />
+    <aura:attribute name="FA" type="Integer" />
+    <aura:attribute name="fileName" type="String" description="The name of the selected file."/>
+     <aura:attribute name="url" type="String" />
+       <aura:attribute name="errorMessage" type="String" default="" description="The message to display to the user as an error."/>
+    <aura:attribute name="Spinner" type="Boolean" default="false"/>
+    <aura:handler event="aura:waiting" action="{!c.showSpinner}" />
+    <aura:handler event="aura:doneWaiting" action="{!c.hideSpinner}" />
+    
+    <aura:if isTrue="{!v.Spinner}">
+    <div aura:id="spinnerId" class="slds-spinner_container">
+       <div class="slds-spinner--brand  slds-spinner slds-spinner--large slds-is-relative" role="alert">
+         <span class="slds-assistive-text">Loading ,Please Wait...</span>
+         <div class="slds-spinner__dot-a"></div>
+         <div class="slds-spinner__dot-b"></div>
+       </div>
+    </div>
+ </aura:if>
+       <div class="slds-card__header slds-grid">
+    <header class="slds-media slds-media_center slds-has-flexi-truncate">
+     
+      <div class="slds-media__body">
+       
+      </div>
+    </header>
+  </div>
+  <div class="slds-card__body slds-card__body_inner">
+  <div class="slds-grid">
+  <div class="slds-col slds-size_2-of-5">
+  
+       <lightning:input aura:id="office" label="Office"
+                             name="Office"
+                             value="{!v.Office}"
+                             required="true"  messageWhenValueMissing= "Please enter 3 digit Office number" maxlength="3" />
+    </div>
+      <div class="slds-col slds-size_1-of-5"> </div>
+    <div class="slds-col slds-size_2-of-5">
+         <lightning:input aura:id="FA" label="FA"
+                             name="FA"
+                             value="{!v.FA}"
+                             required="true" messageWhenValueMissing= "Please enter 3 digit FA number" maxlength="3"/>
+        </div>  
+      </div>  
+  </div>     
+ <div>
+    
+     <p><b> CSV File Upload </b>  <lightning:helptext
+        content="Please select your Lead CSV file. that you would like to upload.Maximum number of leads is 2000."
+                                                          /></p> <br/>
+     <lightning:input aura:id="file" type="file" name="file" label="Upload Attachment" multiple="false" accept=".csv" required="true" messageWhenValueMissing= "Please upload csv file "  value= "{!v.fileName}" />
+     
+       <lightning:button label="Upload" 
+                              class="slds-m-top--medium"
+                              variant="brand" 
+                              onclick="{!c.validateInput}"/>
+
+     <p><a onclick="{!c.download}">Download Template</a><br/> 
+        <a onclick="{!c.FAQ}">FAQ's</a></p>
+ </div>
+
+   
+</aura:component>

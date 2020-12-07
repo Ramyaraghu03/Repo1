@@ -1,0 +1,15 @@
+<apex:page controller="simpleController">
+<apex:pageBlock mode="maindetail" title="Wrapped List of Contacts & Integers">
+		<apex:pageBlockTable value="{!wrappedObjects}" var="w">
+			<apex:column value="{!w.rowCounter}">
+				<apex:facet name="header">#</apex:facet>
+			</apex:column>
+			<apex:column value="{!w.contact.FirstName}"></apex:column>
+			<apex:column value="{!w.contact.LastName}"></apex:column>
+			<apex:column value="{!w.contact.Account.Name}"></apex:column>
+			<apex:column value="{!w.contact.Email}"></apex:column>
+			<apex:column value="{!w.contact.Phone}"></apex:column>
+			<apex:column value="{!w.contact.Id}"></apex:column>
+		</apex:pageBlockTable>
+	</apex:pageBlock>
+</apex:page>

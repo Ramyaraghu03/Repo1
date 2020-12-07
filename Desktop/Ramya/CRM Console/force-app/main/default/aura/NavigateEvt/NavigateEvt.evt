@@ -1,0 +1,6 @@
+<aura:event type="APPLICATION" description="Navigate to another component" >
+<aura:attribute name ="ptype" type="String"/>
+ <aura:attribute name ="etype" type="String"/>
+    <aura:attribute name ="ttype" type ="String"/>
+   
+</aura:event>

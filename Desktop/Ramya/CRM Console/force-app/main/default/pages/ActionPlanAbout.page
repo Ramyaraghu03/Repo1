@@ -1,0 +1,118 @@
+<!--
+Action Plans v3
+Force.com Labs
+http://appexchange.salesforce.com/listingDetail?listingId=a0N30000003HcINEA0
+
+Copyright (c) 2011, salesforce.com, inc.
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, 
+are permitted provided that the following conditions are met:
+
+    * Redistributions of source code must retain the above copyright notice, 
+    this list of conditions and the following disclaimer.
+    * Redistributions in binary form must reproduce the above copyright notice, 
+    this list of conditions and the following disclaimer in the documentation 
+    and/or other materials provided with the distribution.
+    * Neither the name of the salesforce.com, Inc. nor the names of its contributors 
+    may be used to endorse or promote products derived from this software 
+    without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
+IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, 
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, 
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF 
+LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE 
+OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED 
+OF THE POSSIBILITY OF SUCH DAMAGE.
+
+-->
+<apex:page tabStyle="ActionPlansAbout__tab" controller="ActionPlansDisplayController" standardStylesheets="{!axplIsClassic}" showHeader="{!axplIsClassic}">
+    <apex:stylesheet value="{!URLFOR($Resource.ActionPlan_ActionPlanSlds212, '/ActionPlan_ActionPlanSlds212/assets/styles/salesforce-lightning-design-system-vf-shim.css')}" />
+
+    <div class="{!IF(axplIsClassic, '', 'axpl')}">
+        <apex:sectionHeader title="{!$Label.ramyaraghu03__ap_actionplanssetup}" subtitle="{!$Label.ramyaraghu03__ap_action_plan}"/>
+        
+        <apex:pageBlock title="{!$Label.ramyaraghu03__ap_about}">
+            <apex:outputText value="{!$Label.ramyaraghu03__ap_aboutp1}" escape="false" />
+            <apex:outputText value="{!$Label.ramyaraghu03__ap_aboutp1a}" escape="false" />
+            <apex:outputText value="{!$Label.ramyaraghu03__ap_aboutp1b}" escape="false" />
+        </apex:pageBlock>
+        
+        <apex:pageBlock title="{!$Label.ramyaraghu03__ap_gettingstartedtitle}">
+            <p>{!$Label.ramyaraghu03__ap_gettingstartedp1}</p>
+
+            <apex:outputText escape="false" value="{!$Label.ramyaraghu03__ap_gettingstarted_section1}"/>
+            <br/>
+            <br/>
+            <apex:outputText escape="false" value="{!$Label.ramyaraghu03__ap_gettingstarted_section2_title}"/> 
+            <br/>
+            <br/>
+            <apex:outputText escape="false" value="{!$Label.ramyaraghu03__ap_gettingstarted_section2_sub1p1}{!$Label.ramyaraghu03__ap_gettingstarted_section2_sub1p2}"/> 
+            <br/>
+            <apex:outputText escape="false" value="{!$Label.ramyaraghu03__ap_gettingstarted_section2_sub2}"/> 
+            <br/>
+            <apex:outputText escape="false" value="{!$Label.ramyaraghu03__ap_gettingstarted_section3}"/> 
+            
+            <br/>
+            <br/>
+            <apex:outputText escape="false" value="{!$Label.ramyaraghu03__ap_gettingstarted_section4p1}{!$Label.ramyaraghu03__ap_gettingstarted_section4p2}"/> 
+    
+        </apex:pageBlock>
+    
+    
+    
+        <apex:pageBlock title="{!$Label.ramyaraghu03__ap_createtemplatetitle}">
+            <apex:outputText escape="false" value="{!$Label.ramyaraghu03__ap_createtemplatep1andp2}" />
+            <p><apex:image url="{!URLFOR($Resource.ActionPlanLightningAssets, 'Template-Creation.png')}"  /></p>
+            <ol>
+                <apex:outputText escape="false" value="{!$Label.ramyaraghu03__ap_createtemplateolpart1}"/>
+                <apex:outputText escape="false" value="{!$Label.ramyaraghu03__ap_createtemplateolpart2}"/>
+                <apex:outputText escape="false" value="{!$Label.ramyaraghu03__ap_createtemplateolpart3}"/>
+                <apex:outputText escape="false" value="{!$Label.ramyaraghu03__ap_createtemplateolpart4}"/>
+            </ol>   
+        </apex:pageBlock>
+        
+        <apex:pageBlock title="{!$Label.ramyaraghu03__ap_createsactionplans}">
+        
+            <p>{!$Label.ramyaraghu03__ap_createsactionplansp1}</p>
+            
+            <p><apex:image url="{!URLFOR($Resource.ActionPlans_General, 'resourceBundle/Select-Accounts.PNG')}"  /></p>
+            
+            <p>{!$Label.ramyaraghu03__ap_createsactionplansp2}</p>
+            
+            <p><apex:image url="{!URLFOR($Resource.ActionPlans_General, 'resourceBundle/Choose-template-step1.PNG')}"  /></p>
+            
+            <p>{!$Label.ramyaraghu03__ap_createsactionplansp3}</p>
+            
+            <p><apex:image url="{!URLFOR($Resource.ActionPlans_General, 'resourceBundle/Choose-template-step2.PNG')}"  /></p>
+            
+            <apex:outputText escape="false" value="{!$Label.ramyaraghu03__ap_createsactionplansp3_bottom_text}"/>
+            
+            <p>{!$Label.ramyaraghu03__ap_createsactionplansp4}</p>
+            <apex:outputText escape="false" value="{!$Label.ramyaraghu03__ap_createsactionplansp4_note}"/>
+            <p><apex:image url="{!URLFOR($Resource.ActionPlans_General, 'resourceBundle/ActionPlan-Detail.PNG')}"  /></p>
+            
+            <p>{!$Label.ramyaraghu03__ap_createsactionplansp5}</p>
+            <apex:outputText escape="false" value="{!$Label.ramyaraghu03__ap_createsactionplansp5_note}"/>
+            <p><apex:image url="{!URLFOR($Resource.ActionPlans_General, 'resourceBundle/AccountActionPlan-Detail.PNG')}"  /></p>
+            
+    
+        </apex:pageBlock>
+        
+        <apex:pageBlock title="{!$Label.ramyaraghu03__ap_importexport_title}">
+            <p><apex:outputText escape="false" value="{!$Label.ramyaraghu03__ap_importexport_1}"/></p>
+            <br/><br/>
+            <apex:image url="{!URLFOR($Resource.ActionPlanLightningAssets, 'ActionPlanTemplate-import-1.png')}" />
+            <br/><br/>
+            <p><apex:outputText escape="false" value="{!$Label.ramyaraghu03__ap_importexport_2}"/></p>
+            <br/><br/>
+            <apex:image url="{!URLFOR($Resource.ActionPlanLightningAssets, 'ActionPlanTemplate-import-2.png')}" />
+            <br/><br/>
+            <p><apex:outputText escape="false" value="{!$Label.ramyaraghu03__ap_importexport_2}"/></p>
+        </apex:pageBlock>
+    </div>        
+</apex:page>

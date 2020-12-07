@@ -1,0 +1,62 @@
+<aura:component controller ="Campaignlistcontroller" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	<aura:attribute name="Campaignlist" type="Campaign[]" />
+    <aura:attribute name= "paginationList" type="Campaign[]" />
+    <aura:attribute name ="mymap" type = "Map"/>
+    <aura:attribute name= "pageSize" type="Integer" default="5"/>
+    <aura:attribute name="totalSize" type="Integer"/>
+    <aura:attribute name="start" type="Integer" />
+    <aura:attribute name="end" type="Integer"/>
+    <aura:handler name ="init" action = "{!c.doinit}"  value = "{!this}"/>
+    
+    <aura:attribute name="page" type="integer" description="using for store page Number"/>
+    <aura:attribute name="pages" type="integer" description="using for store All Pages page Number"/>
+    <aura:attribute name="total" type="integer" description="total records count store "/>
+      <div class="slds-m-around_small">
+        <div class="slds-page-header" role="banner">
+            <div class="slds-align_absolute-center">            
+                <lightning:button disabled="{!v.page == 1}" variant="brand" label="Previous Page" onclick="{! c.navigate }" />            
+                <lightning:button disabled="{!v.page == v.pages}" aura:id="previousPage" variant="brand" label="Next Page" onclick="{! c.navigate }" />
+            </div>
+            <p class="slds-page-header__title slds-truncate">{!v.total} Accounts • page {!v.page} / {!v.pages}</p>
+            <ui:inputSelect aura:id="recordSize" label="Display Record Per Page: " change="{!c.onSelectChange}">
+                <ui:inputSelectOption text="10" label="10" value="true"/>
+                <ui:inputSelectOption text="15" label="15"/>
+                <ui:inputSelectOption text="20" label="20"/>
+            </ui:inputSelect>
+        </div>
+   
+    <table class="slds-table slds-table–bordered ">
+
+<thead>
+
+<tr style="background-color:#6cbcd2;color:white;font-weight:bold">
+
+<th>Name</th>
+<th>Status</th>
+    <th># of Assignees</th>
+    <th>End Date</th>
+</tr>
+</thead>
+        <tbody>
+        <aura:iteration items="{!v.paginationList}" var="item">
+       <tr>
+            <td><ui:outputText value="{!item.Name}" /></td>
+
+			<td><ui:outputText value="{!item.Status}"/></td>
+           <td><ui:outputText value="{!item.Ramyaraghu03__No_of_CampaignMembers__c}"/></td>
+           <td><ui:outputText value="{!item.EndDate}"/></td>
+           
+                
+       </tr>    
+           
+       
+       </aura:iteration>
+            <lightning:button label ="First" onclick ="{!c.first}" disabled ="{!v.start == 0}" />
+            <lightning:button label ="Previous" onclick ="{!c.Previous}" disabled ="{!v.start == 0}" />
+            <lightning:button label ="Next" onclick ="{!c.Next}" disabled ="{!v.end  >= v.totalSize}" />
+            <lightning:button label ="Last" onclick ="{!c.last}" disabled ="{!v.end  >= v.totalSize}" />                
+        </tbody>
+      
+            </table>
+    </div>
+</aura:component>

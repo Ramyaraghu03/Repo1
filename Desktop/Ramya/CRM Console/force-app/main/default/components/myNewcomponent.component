@@ -1,0 +1,7 @@
+<apex:component >
+  <apex:attribute name="myattribute" type="String" description="TODO: Describe me"/>
+  <!-- Begin Default Content REMOVE THIS -->
+  <h1>Congratulations</h1>
+  This is your new Component: mynewcomponent
+  <!-- End Default Content REMOVE THIS -->
+</apex:component>

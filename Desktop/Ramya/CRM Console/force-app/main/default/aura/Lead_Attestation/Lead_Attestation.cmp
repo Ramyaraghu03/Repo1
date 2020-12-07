@@ -1,0 +1,39 @@
+<aura:component controller="Leadattestcontroller" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	<aura:attribute name="recordId" type="Id" description="The Lead Id of the record" default="{!v.recordId}" required="true" />
+    <aura:attribute name ="isShow" type = "boolean" default = "false" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute name ="description" type = "String" />
+    <aura:attribute name ="ischecked" type = "boolean" default= "false" />
+    <aura:attribute name ="northwelldata" type = "String" />
+    <aura:attribute name = "msg" type = "String" />
+    <aura:if isTrue ="{!v.isShow}">
+    <div >
+    <header class="slds-modal__header">
+    <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate"><b>Lead Generation Form Attestation </b></h2>
+    </header>
+    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+        <lightning:inputRichText value="{!v.description}" /> <br/>
+        <div>
+        <span>    
+        <lightning:input type = "Checkbox" checked = "{!v.ischecked}"/>By checking this box, you are confirming that the Lead Generation Form has been completed by this FinWell Lead and its contents have been reviewed and approved as necessary.        
+        </span>
+        </div>
+     </div>
+    <footer class="slds-modal__footer">
+        <aura:if isTrue ="{!v.ischecked}">
+       <lightning:button variant="brand" label="Lead Attestation" onclick="{! c.handleAttest }" />
+<lightning:button variant="neutral" label="Cancel" onclick="{!c.OnCancel }" />
+      
+        <aura:set attribute="else">
+       <lightning:button variant="brand" disabled="true">Lead Attestation</lightning:button>
+      <lightning:button variant="neutral" label="Cancel" onclick="{!c.OnCancel }" />
+    </aura:set>
+      </aura:if>
+    </footer>
+    </div>
+  <aura:set attribute="else">
+      <ui:outputText value="{!v.msg}"/>
+  </aura:set>
+    	
+    </aura:if>
+</aura:component>

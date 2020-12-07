@@ -1,0 +1,8 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	<lightning:card title = "Allow Access">
+      <span class="slds-assistive-text">Search and add users to entitle access to this Campaign</span>  
+      <p class="slds-p-horizontal_small">
+        </p>
+    </lightning:card>
+    
+</aura:component>

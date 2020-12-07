@@ -1,0 +1,22 @@
+<aura:component  controller ="TaskHistory" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	<aura:attribute name="data" type="Object"/>
+    <aura:attribute name="columns" type="List"/>
+<aura:attribute name="recordId" type="String"/>
+    <!-- This attribute will hold the update records from data table-->
+   
+
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+
+    <!-- You must define keyField as 'Id' to save the record back in Salesforce
+'onsave' attribute will executed when user clicks on save button -->
+    <lightning:card title="Task History">
+        <lightning:datatable
+                             aura:id="accountDataTable"
+                             columns="{! v.columns }"
+                             data="{! v.data }"
+                             keyField="Id"
+                            
+                             hideCheckboxColumn="true"
+                             onrowaction="{! c.handleRowAction }" />
+    </lightning:card>
+</aura:component>

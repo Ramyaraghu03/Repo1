@@ -1,0 +1,38 @@
+<aura:component controller = "I2Econtroller" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" access="global" >
+    <aura:attribute name = "objInfo" type = "TalkingPoints__c"  default = "{'sobjectType' :'TalkingPoints__c'}" />
+    <aura:attribute name ="recordId" type = "String" />
+    <aura:attribute name = "statusValues" type = "String[]"/>
+    <aura:attribute name = "statusSelected" type = "String"/>
+    <aura:handler name = "init" value ="{!this}" action = "{!c.doInit}"/>
+    <aura:attribute name = "displayMsg" type ="String"/>
+    <aura:attribute name ="Spinner" type ="Boolean" default ="false"/>
+     <aura:handler event="force:refreshView" action="{!c.doInit}"/>
+    <aura:attribute name="statusMap" type="Map"/>
+     <aura:registerEvent name="PicklistSelected" type="c:PickListEvent"/>
+    
+    <aura:if isTrue = "{!v.Spinner}">
+    <lightning:spinner variant = "brand" size ="small">
+    </lightning:spinner>
+        <aura:set attribute ="else">
+            <div class="slds-select_container">
+
+            <ui:inputSelect aura:id="myStatus" label="Status" change="{!c.onPicklistChange}" class="slds-select slds-text-align-right">
+            
+                <aura:iteration items="{!v.statusValues}" var="stv" indexVar="index">            
+                 <ui:inputSelectOption class="inputSelectpadding"  label="{!stv}" text="{!stv}" />  
+                </aura:iteration>  
+                
+            </ui:inputSelect>
+    
+           <!-- <div class="form-group">
+                <lightning:select aura:id="statusyPicklist" value="{!v.statusValues}" onchange="{!c.onPicklistChange}" name="Tstatus" label="Status" >
+                    
+                    <aura:iteration items="{!v.statusMap}" var="ind" indexVar="key">
+                        <option text="{!ind.value}" value="{!ind.key}" selected="{!ind.key==v.statusSelected}" />
+                    </aura:iteration>
+                </lightning:select>
+            </div> --> 
+            </div>  
+        </aura:set>
+    </aura:if>
+</aura:component>

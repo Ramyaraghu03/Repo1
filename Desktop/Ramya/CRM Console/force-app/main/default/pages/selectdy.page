@@ -1,0 +1,9 @@
+<apex:page controller="selectdyn">
+    <apex:form id="form">
+        <apex:selectCheckboxes value="{!values}">
+            <apex:selectOptions value="{!valueList}"/>
+        </apex:selectCheckboxes>
+        {!outputText}
+        <apex:commandButton value="List Selections" reRender="form"/>
+    </apex:form>
+</apex:page>

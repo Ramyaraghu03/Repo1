@@ -1,0 +1,28 @@
+<apex:page controller="wizard_class" >
+<apex:form >
+        <apex:pageBlock title="Review & Save">
+        <apex:pageBlockButtons >
+            <apex:commandButton value="EditAccount" action="{!gotopage1}"/>
+            <apex:commandButton value="EditContract" action="{!gotopage2}"/>
+            <apex:commandButton value="EditOrder" action="{!gotopage2}"/>
+               </apex:pageBlockButtons>
+            <apex:pageBlockSection title="Account Details">
+                <apex:outputField value="{!a.Name}"/>
+                <apex:outputField value="{!a.Type}"/>
+                <apex:outputField value="{!a.Industry}"/>
+                <apex:outputField value="{!a.Rating}"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection title="Contract Details">
+                <apex:outputField value="{!c.AccountId}"/>
+                <apex:outputField value="{!c.StartDate}"/>
+                <apex:outputField value="{!c.ContractTerm}"/>
+               </apex:pageBlockSection>
+            <apex:pageBlockSection title="Order Details">
+                <apex:outputField value="{!O.AccountId}"/>
+                <apex:outputField value="{!o.Status}"/>
+                <apex:outputField value="{!o.ContractId}"/>
+                 <apex:outputField value="{!o.EffectiveDate}"/>
+               </apex:pageBlockSection>
+            </apex:pageBlock>
+    </apex:form>
+</apex:page>

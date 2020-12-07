@@ -1,0 +1,15 @@
+<apex:page controller="WSelectclass" >
+    <apex:form >
+        <apex:pageBlock >        
+            <apex:pageBlockTable value="{!wcselected}" var="w1">
+                <apex:column headervalue="SlNo">
+                    <apex:outputText >{!w1.slno}</apex:outputText>
+                </apex:column> 
+             <apex:column value="{!w1.cl.Name}" headervalue="ClassName"/>
+                <apex:column value="{!w1.cl.Max_Deskcost__c}" headervalue="MaxDeskCost"/> 
+                <apex:column value="{!w1.cl.Min_Deskcost__c}" headervalue="MinDeskCost"/>
+                <apex:column value="{!w1.cl.Avg_Deskcost__c}" headervalue="AvgDeskCost"/> 
+         </apex:pageBlockTable>
+            </apex:pageBlock>
+    </apex:form>
+</apex:page>

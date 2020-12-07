@@ -1,0 +1,21 @@
+<apex:page controller="Schemacontroller" >
+    <apex:form >
+    <apex:pageBlock title="SchemaClass">
+     <apex:pageBlockSection >
+         <apex:pageBlockSectionItem >
+             <apex:outputLabel value="SchemaObjects"/>
+                 <apex:selectList size="1" value="{!selectedobj}" >
+                     
+                     <apex:selectOptions value="{!objects}" />
+                     <apex:actionSupport event="onchange" action="{!details}" reRender="des"/>
+                     </apex:selectList>
+             
+         </apex:pageBlockSectionItem>
+         <apex:pageBlockSectionItem >
+             <apex:outputLabel value="{!res}" id="des"></apex:outputLabel>
+         </apex:pageBlockSectionItem>
+     </apex:pageBlockSection>        
+        
+    </apex:pageBlock>
+    </apex:form>
+</apex:page>

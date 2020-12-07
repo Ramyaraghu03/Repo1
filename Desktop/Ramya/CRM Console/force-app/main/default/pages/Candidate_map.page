@@ -1,0 +1,4 @@
+<apex:page standardController="Position__c">
+ <h1>Candidate Map</h1>
+  <p>This Map shows the locations of candidates who have applied for {!Position__c.Name}position.</p>
+</apex:page>

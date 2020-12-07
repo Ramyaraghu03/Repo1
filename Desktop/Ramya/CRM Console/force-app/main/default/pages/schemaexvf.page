@@ -1,0 +1,7 @@
+<apex:page controller="SchemaEx">
+    <apex:form >
+    <apex:selectList size="1" >
+        <apex:selectOptions value="{!options}">
+        </apex:selectOptions>
+        </apex:selectList></apex:form>
+</apex:page>

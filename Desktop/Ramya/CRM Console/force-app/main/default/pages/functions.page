@@ -1,0 +1,10 @@
+<apex:page sidebar="false" showHeader="false">
+<apex:pageBlock >
+<h1>Congratulations</h1>
+  This is your new Page
+<p> Today's date is {!TODAY()} </p>
+<p> Next week date is {!TODAY()+7} </p>
+<p> sqrt of 49 {!SQRT(49)} </p>
+<p> contains comp two text fields {!CONTAINS ('ra.mya','ra.ghu')} </p>
+</apex:pageBlock>
+</apex:page>

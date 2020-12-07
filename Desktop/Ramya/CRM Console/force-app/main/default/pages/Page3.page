@@ -1,0 +1,16 @@
+<apex:page controller="wizard_class" >
+ <apex:form >
+        <apex:pageBlock title="Enter Order Details">
+        <apex:pageBlockButtons >
+             <apex:commandButton value="SaveOrder" action="{!saveorder}"/>
+            <apex:commandButton value="Next" action="{!gotopage4}"/>
+        </apex:pageBlockButtons>
+            <apex:pageBlockSection >
+                <apex:inputField value="{!o.AccountId}"/>
+                <apex:inputField value="{!o.Status}"/> 
+                <apex:inputField value="{!o.ContractId}"/>
+                <apex:inputField value="{!o.EffectiveDate}"/>
+            </apex:pageBlockSection>
+            </apex:pageBlock>
+    </apex:form>
+</apex:page>

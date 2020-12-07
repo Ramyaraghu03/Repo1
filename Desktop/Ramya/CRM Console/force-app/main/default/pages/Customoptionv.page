@@ -1,0 +1,16 @@
+<apex:page controller="Customoption">
+<apex:form >
+    <apex:pageBlock title="selectoption">
+        <apex:pageBlockButtons >
+        <apex:commandButton action="{!Save}" value="save"/>
+            </apex:pageBlockButtons>
+        <apex:pageBlockSection title="select Country" collapsible="False" >
+            <apex:selectList value="{!Selectedcountry}" multiselect="false" size="1">
+                <apex:selectOption itemvalue="INDIA" itemLabel="INDIA"/>
+                <apex:selectOption itemvalue="United Kingdom" itemLabel="UK"/>
+                <apex:selectOption itemvalue="United States" itemLabel="US"/>
+              </apex:selectList>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+    </apex:form>
+</apex:page>

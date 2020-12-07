@@ -1,0 +1,3 @@
+<apex:Page controller="SummaryAccount" readonly="true" >
+<p> Here is Account details {!acctstat} </p>
+</apex:page>

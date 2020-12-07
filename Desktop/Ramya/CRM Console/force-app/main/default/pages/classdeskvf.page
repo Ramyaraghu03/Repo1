@@ -1,0 +1,19 @@
+<apex:page controller="Classdesk" >
+    <apex:pageBlock >
+        <apex:tabPanel >
+            <apex:tab label="Class" name="Class__c" labelWidth="300">
+                <apex:pageBlockTable value="{!classlist}" var="c">
+                    <apex:column value="{!c.Name}"/>
+                    <apex:column value="{!c.No_of_Desks__c}"/>
+                    <apex:column value="{!c.Max_Deskcost__c}"/>
+                </apex:pageBlockTable>
+                          </apex:tab>
+          <apex:tab label="Desks" name="Desks__c" labelWidth="300">
+              <apex:pageBlockTable value="{!desklist}" var="d">
+                    <apex:column value="{!d.Name}"/>
+                    <apex:column value="{!d.Cost__c}"/>
+              </apex:pageBlockTable>
+                          </apex:tab>
+        </apex:tabPanel>
+    </apex:pageBlock>
+</apex:page>
